@@ -16,13 +16,13 @@
 -->
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="runescape.action_window">
+
+    <record model="ir.actions.act_window" id="runescape.action_player_window">
       <field name="name">runescape window</field>
-      <field name="res_model">runescape.runescape</field>
+      <field name="res_model">runescape.player</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
 <!--
@@ -41,20 +41,18 @@
 -->
 
     <!-- Top menu item -->
-<!--
+
     <menuitem name="runescape" id="runescape.menu_root"/>
--->
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="runescape.menu_1" parent="runescape.menu_root"/>
-    <menuitem name="Menu 2" id="runescape.menu_2" parent="runescape.menu_root"/>
--->
+
+    <menuitem name="Menu" id="runescape.menu_game" parent="runescape.menu_root"/>
+
     <!-- actions -->
-<!--
-    <menuitem name="List" id="runescape.menu_1_list" parent="runescape.menu_1"
-              action="runescape.action_window"/>
-    <menuitem name="Server to list" id="runescape" parent="runescape.menu_2"
-              action="runescape.action_server"/>
--->
+
+    <menuitem name="List" id="runescape.menu_player_list" parent="runescape.menu_game"
+              action="runescape.action_player_window"/>
+
+
   </data>
 </odoo>
