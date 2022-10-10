@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_runescape_player,runescape.player,model_runescape_player,base.group_user,1,1,1,1
+access_runescape_world,runescape.world,model_runescape_world,base.group_user,1,1,1,1
