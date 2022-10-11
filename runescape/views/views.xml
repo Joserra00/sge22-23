@@ -22,6 +22,16 @@
       <field name="res_model">runescape.player</field>
       <field name="view_mode">tree,form</field>
     </record>
+        <record model="ir.actions.act_window" id="runescape.action_armor_window">
+      <field name="name">Armor</field>
+      <field name="res_model">runescape.armor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+        <record model="ir.actions.act_window" id="runescape.action_sword_window">
+      <field name="name">Sword</field>
+      <field name="res_model">runescape.sword</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
 
 
@@ -53,6 +63,10 @@
 
     <menuitem name="Player list" id="runescape.menu_player_list" parent="runescape.menu_game"
               action="runescape.action_player_window"/>
+        <menuitem name="Armor " id="runescape.menu_armor_list" parent="runescape.menu_game"
+              action="runescape.action_armor_window"/>
+            <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
+              action="runescape.action_sword_window"/>
 
 
 
