@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_runescape_player,runescape.player,model_runescape_player,base.group_user,1,1,1,1
-access_runescape_world,runescape.world,model_runescape_world,base.group_user,1,1,1,1
+access_runescape_armor,runescape.armor,model_runescape_armor,base.group_user,1,1,1,1
+access_runescape_sword,runescape.sword,model_runescape_sword,base.group_user,1,1,1,1
+access_runescape_material,runescape.material,model_runescape_material,base.group_user,1,1,1,1

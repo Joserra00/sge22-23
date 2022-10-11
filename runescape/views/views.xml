@@ -22,11 +22,7 @@
       <field name="res_model">runescape.player</field>
       <field name="view_mode">tree,form</field>
     </record>
-        <record model="ir.actions.act_window" id="runescape.action_world_window">
-      <field name="name">World</field>
-      <field name="res_model">runescape.world</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+
 
 
     <!-- server action to the one above -->
@@ -55,10 +51,10 @@
 
     <!-- actions -->
 
-    <menuitem name="List" id="runescape.menu_player_list" parent="runescape.menu_game"
+    <menuitem name="Player list" id="runescape.menu_player_list" parent="runescape.menu_game"
               action="runescape.action_player_window"/>
-    <menuitem name="World" id="runescape.menu_world_list" parent="runescape.menu_game"
-              action="runescape.action_world_window"/>
+
+
 
 
   </data>
