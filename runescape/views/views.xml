@@ -1,8 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="runescape.list">
+    <!--<record model="ir.ui.view" id="runescape.list">
       <field name="name">runescape list</field>
       <field name="model">runescape.runescape</field>
       <field name="arch" type="xml">
@@ -12,8 +11,66 @@
           <field name="value2"/>
         </tree>
       </field>
+    </record>-->
+     <record model="ir.ui.view" id="runescape.player_form">
+      <field name="name">runescape list</field>
+      <field name="model">runescape.player</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="password" password = "true"/>
+                <field name="hp"/>
+                <field name="defense"/>
+                <field name="armor" mode="tree"/>
+                <field name="armor_image" widget="image"/>
+                <field name="damage"/>
+                <field name="sword" mode="tree"/>
+                <field name="sword_image" widget="image"/>
+                <field name="coins"/>
+                <field name="strength"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
     </record>
--->
+      <record model="ir.ui.view" id="runescape.sword_form">
+      <field name="name">runescape sword</field>
+      <field name="model">runescape.sword</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="sword_image" widget="image"/>
+                <field name="name"/>
+                <field name="damage"/>
+                <field name="price"/>
+                <field name="material"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+      <record model="ir.ui.view" id="runescape.armor_form">
+      <field name="name">runescape armor</field>
+      <field name="model">runescape.armor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="armor_image" widget="image"/>
+                <field name="name"/>
+                <field name="defense"/>
+                <field name="price"/>
+                <field name="material"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 
@@ -32,7 +89,11 @@
       <field name="res_model">runescape.sword</field>
       <field name="view_mode">tree,form</field>
     </record>
-
+   <record model="ir.actions.act_window" id="runescape.action_zone_window">
+      <field name="name">Zona</field>
+      <field name="res_model">runescape.zone</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
 
     <!-- server action to the one above -->
@@ -67,7 +128,8 @@
               action="runescape.action_armor_window"/>
             <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
               action="runescape.action_sword_window"/>
-
+    <menuitem name="Zone" id="runescape.menu_zone_list" parent="runescape.menu_game"
+              action="runescape.action_zone_window"/>
 
 
 
