@@ -49,7 +49,7 @@ class zone(models.Model):
     _description = 'Runescape city'
 
     name = fields.Char()
-    avatar = fields.Image(max_width=50, max_height=50)
+    avatar = fields.Image(max_width=200, max_height=200)
     price = fields.Integer()
 
 class dungeon(models.Model):
@@ -59,17 +59,19 @@ class dungeon(models.Model):
     name = fields.Char()
     avatar = fields.Image(max_width=200, max_height=200)
     price = fields.Integer()
+    mob = fields.One2many('runescape.mob','dungeon')
 
 class mob(models.Model):
     _name = 'runescape.mob'
     _description = 'Runescape mob'
 
     name = fields.Char()
-    avatar = fields.Image(max_width=200, max_height=200)
+    avatar = fields.Image(max_width=50, max_height=50)
     damage = fields.Integer()
     strength = fields.Integer()
     defense = fields.Integer()
     hp = fields.Integer()
+    dungeon = fields.Many2one('runescape.dungeon')
 
 
 

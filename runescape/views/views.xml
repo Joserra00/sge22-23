@@ -1,41 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--<record model="ir.ui.view" id="runescape.list">
-      <field name="name">runescape list</field>
-      <field name="model">runescape.runescape</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>-->
-     <record model="ir.ui.view" id="runescape.player_form">
-      <field name="name">runescape list</field>
-      <field name="model">runescape.player</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-                <field name="avatar" widget="image"/>
-                <field name="name"/>
-                <field name="password" password = "true"/>
-                <field name="hp"/>
-                <field name="defense"/>
-                <field name="armor" mode="tree"/>
-                <field name="armor_image" widget="image"/>
-                <field name="damage"/>
-                <field name="sword" mode="tree"/>
-                <field name="sword_image" widget="image"/>
-                <field name="coins"/>
-                <field name="strength"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
+
       <record model="ir.ui.view" id="runescape.sword_form">
       <field name="name">runescape sword</field>
       <field name="model">runescape.sword</field>
@@ -70,6 +36,58 @@
         </form>
       </field>
     </record>
+       <record model="ir.ui.view" id="runescape.zone_form">
+      <field name="name">runescape zone</field>
+      <field name="model">runescape.zone</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="price"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+        <record model="ir.ui.view" id="runescape.dungeon_form">
+      <field name="name">runescape dungeon</field>
+      <field name="model">runescape.dungeon</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <group>
+              <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="price"/>
+                    </group>
+                <group string="MOB">
+                <tree>
+                    <field name="mob"/>
+                </tree>
+                    </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+      <record model="ir.ui.view" id="runescape.mob_list">
+      <field name="name">runescape mob</field>
+      <field name="model">runescape.mob</field>
+      <field name="arch" type="xml">
+        <tree>
+              <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="damage"/>
+                <field name="hp"/>
+                <field name="defense"/>
+                <field name="strength"/>
+
+        </tree>
+      </field>
+    </record>
 
 
     <!-- actions opening views on models -->
@@ -92,6 +110,16 @@
    <record model="ir.actions.act_window" id="runescape.action_zone_window">
       <field name="name">Zona</field>
       <field name="res_model">runescape.zone</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+       <record model="ir.actions.act_window" id="runescape.action_dungeon_window">
+      <field name="name">Dungeon</field>
+      <field name="res_model">runescape.dungeon</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+       <record model="ir.actions.act_window" id="runescape.action_mob_window">
+      <field name="name">Mob</field>
+      <field name="res_model">runescape.mob</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -124,12 +152,16 @@
 
     <menuitem name="Player list" id="runescape.menu_player_list" parent="runescape.menu_game"
               action="runescape.action_player_window"/>
-        <menuitem name="Armor " id="runescape.menu_armor_list" parent="runescape.menu_game"
+      <menuitem name="Armor " id="runescape.menu_armor_list" parent="runescape.menu_game"
               action="runescape.action_armor_window"/>
-            <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
+      <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
               action="runescape.action_sword_window"/>
-    <menuitem name="Zone" id="runescape.menu_zone_list" parent="runescape.menu_game"
+    <menuitem name="Zona Segura" id="runescape.menu_zone_list" parent="runescape.menu_game"
               action="runescape.action_zone_window"/>
+          <menuitem name="Dungeon" id="runescape.menu_dungeon_list" parent="runescape.menu_game"
+              action="runescape.action_dungeon_window"/>
+          <menuitem name="Mob" id="runescape.menu_mob_list" parent="runescape.menu_game"
+              action="runescape.action_mob_window"/>
 
 
 
