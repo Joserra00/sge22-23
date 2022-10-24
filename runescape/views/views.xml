@@ -19,6 +19,18 @@
         </form>
       </field>
     </record>
+      <record model="ir.ui.view" id="runescape.sword_list">
+      <field name="name">runescape swords</field>
+      <field name="model">runescape.sword</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="sword_image" widget="image"/>
+          <field name="damage"/>
+          <field name="price"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
       <record model="ir.ui.view" id="runescape.armor_form">
       <field name="name">runescape armor</field>
       <field name="model">runescape.armor</field>
@@ -34,6 +46,18 @@
             </group>
           </sheet>
         </form>
+      </field>
+    </record>
+      <record model="ir.ui.view" id="runescape.armor_list">
+      <field name="name">runescape armor</field>
+      <field name="model">runescape.armor</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="armor_image" widget="image"/>
+          <field name="defense"/>
+          <field name="price"/>
+          <field name="name"/>
+        </tree>
       </field>
     </record>
        <record model="ir.ui.view" id="runescape.zone_form">

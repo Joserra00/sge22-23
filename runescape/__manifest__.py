@@ -29,6 +29,7 @@
         'views/player.xml',
         'views/templates.xml',
         'demo/demo.xml',
+        'demo/demo_sword.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

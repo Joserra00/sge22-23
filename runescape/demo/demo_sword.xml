@@ -1,0 +1,195 @@
+<odoo>
+    <data>
+
+                <record id="rune_sword" model = "runescape.sword">
+            <field name="sword_image">/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAB4AGkDASIA
+AhEBAxEB/8QAHAABAAEFAQEAAAAAAAAAAAAAAAcCAwQFBggB/8QAOBAAAQMDAQUFBgUDBQAAAAAA
+AQACAwQFEQYhMUFRYQcSE3GBFBUiQmKRIzJSobHB0fAWVXLS8f/EABoBAQADAQEBAAAAAAAAAAAA
+AAABAgMEBQb/xAAkEQADAAIBAwMFAAAAAAAAAAAAAQIDETEEEiEFQVETIjJh8P/aAAwDAQACEQMR
+AD8An9ERAEREAREQBERAEVEkrIY3SSPaxjRlznHAA5kqPdRdq9st/fp7OwXCpGzxMlsLT573en3R
+LZDaXJIE9RDSwvmnlZFEwZc97g1rR1JUd6h7V6Kl71PY4hWTDZ48mREPIb3fsOqjG8aiu+op/EuV
+W+VoOWRN+GNnk0bPU7VgsZzWsx8mVZPgljs2uFzv16ud0uVXJOY4mRMB2MZ3jkhrRsH5QpNXB9lF
+GINMz1BHxVFS455hoDf5yu8WdcmkfiERFBYIiIAiIgC5nVms7fpSjDpz41ZIMw0rD8T+p/S3r9sr
+Ua47RabTrX0Fv7lRdcYI3sg6u5n6fvjjB9VV1VxrJaysnfPUSnvPkeck/wCclaZ2Uq9G1vuq7zqW
+Um4VRMOctp4/hib6cfM5WrZGSqWNV0HC1S0YN7LrIwshjFjsflXmvVirJ/0XS+x6PtkWzLoRIcc3
+Eu/qt8ot7NtViKQWGtf8Dzmle47jxZ67x6jkpTXPS0zqh7QREUFgiIgCifX3aa6llns1hfidhMc9
+YPkPFrOvAu4cOY33aTrH/TlnFJRyYudY0iIg7Ymbi/8AoOvkoAaFeZ35M7rXhFY7z3FziXOJySTk
+k8yrrQqGBXmNWqMSsDAX1Ezj12DqUIPoOFdiLpJGxsa573HDWtGST0HFdfpzs0u157lRcO9bqM7R
+32/ivHRvDzP2Us2LSdn07Hi30oEuMOnk+KR3m47vIYCq7SNJxtkaae7NrvXOjqLg822EEOA3zHlg
+fL67eilP3RP/ALzcPuz/AKraIsnTZrMpcBERQWC197vFJYbRUXGsd3YYW5wN7jwaOpOxbBef+0nV
+51HePYaOTNto3ENIOyWTcX+Q3D1PFSltlarSOWvV3q9QXmoudYfxZnflG5jRuaOgH9+Kw2tRreiu
+MZlbJGDYaMK63AGVXDA+aVkUUbpJXuDWMYMucTuAHNTLpHszoqCGOsvcTaqu2OELtsUPIY3OPU7O
+XNG9CZdEd6d0VedSkSU8Ps9HnbVTghuPpG93ps6qX9N6Cs+mw2aOP2qtG+pnALgfpG5vpt6rqGtD
+GgAAADAA4L6snTZtMKQiIqlwiIgCJwUeT69kt9+ulBJGydsMr2RAnukEDYCeWVjmzxh074ZaZdcF
+vtS1h7qt/uWhkxW1bPxXNO2KI/wXbh0yeShFrOi2V2dX1d2nq7p3nVU7y97juP8Ax6DcOix2Rrrx
+9rncvZy23vyUMj5rIihfLIyKKN0ksjg1jGDJcTuAHNVRRPklZDEx0ksjg1kbBkuJ3ADmpr0LoWOw
+RC4XANkusjfMU4Pyt+rmfQdbOtETLpjQuhY7BELhcGtkur2+YgB+Vv1cz6Dr3KIsW9nQkktIIiKC
+QiIgCIiAHcV5c1rWyUPaJfMPcM1jj6YC9PzTMghfLK4NjY0uc48ANpK8lanr5L7qq5XZ9M6mZVTF
+7GOYW4bubnqQAT1XL1Xa50zXEts3tFeGVMAhqmNliPr/AOK/Jbu83xKEmUfo+Yf3Whstsr6p001J
+STzw07QZ3RMLgwHOM4/zYuvsNPNUnuQQySu3YYwu/heR9bL0lbxcP29n/fo1vFN+KJL0LoaOwxC4
+V4bJdJG7OLYAeDeZ5n0HXuVYpGltHC1wwRG0EcjhX19AqdLbORJLwgiIpJCIiAIiIAiIgOM7Qbr7
+Pao7bE78asOHbd0Y3/c4H3XHUMLGxgPaH/S4ZBVm93b3zqGprASYgfDh6MG777T6rJtTXT11PH+u
+Vo/dfIeo5n1Gb7eOEd+GeyfJI+l9O0embOyipW/E4mSaQjBked5P8AcAAtvHFHECGNa0E5PdGMlV
+ovrZlJJHC3t7CIisQEREAREQBERAEREBCln01dbk7NPRvEOSPFk+Bm/md/ou/smjmW+aKoqanxJY
+yHNZGMNB8ztP7Ii8npegwaWRrbNry1wdYiIvWMQiIgCIiAIiIAiIgCIiA//Z
+</field>
+            <field name="name">Rune sword</field>
+            <field name="damage">30</field>
+            <field name="price">20000</field>
+            <field name="material">7</field>
+        </record>
+        <record id="adamant_sword" model = "runescape.sword">
+            <field name="sword_image">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</field>
+            <field name="name">Adamant sword</field>
+            <field name="damage">25</field>
+            <field name="price">17000</field>
+            <field name="material">6</field>
+        </record>
+                <record id="mithril_sword" model = "runescape.sword">
+            <field name="sword_image">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
+NTU6MTkrMDA6MDCFxNTbAAAAAElFTkSuQmCC
+</field>
+            <field name="name">Mithril sword</field>
+            <field name="damage">20</field>
+            <field name="price">15000</field>
+            <field name="material">5</field>
+        </record>
+<!--
+          <record id="object0" model="runescape.runescape">
+            <field name="name">Object 0</field>
+            <field name="value">0</field>
+          </record>
+
+          <record id="object1" model="runescape.runescape">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+
+          <record id="object2" model="runescape.runescape">
+            <field name="name">Object 2</field>
+            <field name="value">20</field>
+          </record>
+
+          <record id="object3" model="runescape.runescape">
+            <field name="name">Object 3</field>
+            <field name="value">30</field>
+          </record>
+
+          <record id="object4" model="runescape.runescape">
+            <field name="name">Object 4</field>
+            <field name="value">40</field>
+          </record>
+-->
+    </data>
+</odoo>
