@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/player.xml',
         'views/templates.xml',
+        'demo/demo.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
