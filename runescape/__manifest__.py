@@ -30,6 +30,7 @@
         'views/templates.xml',
         'demo/demo.xml',
         'demo/demo_sword.xml',
+        'demo/demo_armor.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

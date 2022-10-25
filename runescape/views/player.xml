@@ -30,9 +30,11 @@
                     <field name="armor_image" widget="image"/>
                     <field name="armor" mode="tree"/>
                     <field name="defense"/>
+                    <field name="armor_price"/>
                     <field name="sword_image" widget="image"/>
                     <field name="sword" mode="tree"/>
                     <field name="damage"/>
+                    <field name="sword_price"/>
                 </group>
             </group>
           </sheet>

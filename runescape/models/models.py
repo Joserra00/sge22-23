@@ -9,17 +9,28 @@ class player(models.Model):
 
     name = fields.Char(required=True)
     password = fields.Char()
-    avatar = fields.Image(max_width = 200, max_height=200)
-    coins = fields.Integer(default=20000)
+    avatar = fields.Image(max_width = 100, max_height=100)
+    coins = fields.Integer(default=7000)
     hp = fields.Integer(default=20)
-    sword = fields.Many2one('runescape.sword')
+    def _first_sword(self):
+        return self.env['runescape.sword'].search([])[6]
+    sword = fields.Many2one('runescape.sword',default=_first_sword)
     damage = fields.Integer(related='sword.damage')
     sword_image = fields.Image(related='sword.sword_image')
-    armor = fields.Many2one('runescape.armor')
+    sword_price = fields.Integer(related='sword.price')
+    def _first_armor(self):
+        return self.env['runescape.armor'].search([])[6]
+
+    armor = fields.Many2one('runescape.armor',default=_first_armor)
     defense = fields.Integer(related='armor.defense')
     armor_image=fields.Image(related='armor.armor_image')
-    strength = fields.Integer(default=1)
+    armor_price = fields.Integer(related='armor.price')
+    strength = fields.Integer(default=5)
     city = fields.Many2one('runescape.zone')
+
+
+
+
 
 
 

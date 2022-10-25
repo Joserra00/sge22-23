@@ -1,0 +1,276 @@
+<odoo>
+    <data>
+
+        <record id="rune_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABRACcDASIA
+AhEBAxEB/8QAHAAAAwEAAgMAAAAAAAAAAAAAAAYHBQQIAQID/8QANBAAAQMDAwMDAgMHBQAAAAAA
+AQIDBAAFEQYSIQcxQRNRYSKBFHGRFSQyN0JTwXSCobHw/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQID
+AP/EACARAAICAgICAwAAAAAAAAAAAAABAhESIQNBIjIxUXH/2gAMAwEAAhEDEQA/ALNWJqm8RrXZ
+30OSxHkSGlNxyM7gsjAPHIAJHPithxRS2pSRkgEge9QSbqp6/TX35KC26oZxuyEckbR7YpopXsVy
+x2OnRlq4/sy5yJTrjkdx9KWSpZUCsA7yM/JHPkiqVSd0uY9LSAWDlL0l1Y9u+OPuKcaPJLKbY7d7
+CiiikAJHUjUUq1RI0KE8WVygpS3EHC0pTjgHxknv8VMX4jtw3zZ7zrj6/wCpSsqIHbJ81T+pNjiz
+LWm7OuuIehfSlKcFKwpQ4OfnzU3cdXtzkEGrQqiE7s2NNa/m6ejtwnWEy4LSdrbYwhbfOeD579j+
+tVPT9/h6ktSLhCKggkpWheNyFDuDj/2CK68SHFN5HtT/ANIXmIkyaH7u205JwEQFjBWR2WFHgnkj
+A+/ipzcboeGRW6KKKUoInUtS7im2WGLN9B+ZKTuGCQEnIBOOe54Hx8Ui3GIY8l6OUbFNLKCnGMY4
+/wAVanrbBenM3B2K0uUwCG3lJypAPfB+5/WoM9dlyJL/AK2XFrcUrdnk5JqsCPIjhSIzxRILbRWE
+tErwnO1OR9Xx45+a4hWPw2T4Tn74onzPSc+lwha0lJQlfg981lKkvpQUFSVJPH5VCT8m+ikY+KLF
+0u1NcZs9y0TZi5DQj+oyXfqUkggEbu5GD59qKQdEakZtGqIkx47EJStK89sFB/yBRRtdDK+zsBdp
+zNutciW+vahtB59yeAP1xXXVi3zLje2LdESky3lENhSsJJAJ7/kDV310hCtF3NShkoZ3p+FAjB/W
+o5oBp+Z1Ctp2lexS1r57JCFAn/kVRerJv2QnyGpMdw/iW1pWe5UK+be951KG0KccWQlCEjJUT2AH
+k06dQrW/Zrw9bhkx8B1hav4igjjP5EEfaq7p/SlgZZg3hu0RETzHbWX0tgHcUDJAHAPJ5Apca/Bk
+7+Rf0D0xjWdhFyvjDci4uJ4ZWApEcHxjsVe58dh7kqjUUBhU6jXOPB0rIjPBzfOSWWilGU7u/J8c
+A0sdHoEX1blP9VCpQ2tBvP1IR3Jx7E8f7ax9canm3uYq3qjuIS24UtxEpKllQ4yQOSaculun5lls
+kh24QkxZEt3cAoH1dgGAFe3OSB880ba0KqezI6vxlvCE4mC6UNIUFykpykZPCD7ds/emDppe37zp
+j96eS4/FdLJATt2oAGzOPivbXFmvl5ZZZtpaXHHLjSnNhUrwc9iB7f8AdamltOR9M2dMJo+o6s+o
++7/ccPc/A8Aewob+wo2aKKKwRQjfzUm/6Fum4dqKKxkeaKKKxgooorGP/9k=
+
+
+            </field>
+            <field name="name">Rune armor</field>
+            <field name="defense">40</field>
+            <field name="price">40000</field>
+            <field name="material">7</field>
+        </record>
+
+
+                <record id="adamant_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABRACcDASIA
+AhEBAxEB/8QAHAAAAwADAQEBAAAAAAAAAAAAAAYHBAUIAQID/8QAMRAAAQMDAwMDAgUEAwAAAAAA
+AQIDBAAFEQYSIQcxQRNRYSJxFEKBkaEVJjd1scHh/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//E
+AB0RAAMBAAIDAQAAAAAAAAAAAAABEQIhMQMSQSL/2gAMAwEAAhEDEQA/ALNWm1PeIlqtL4emCO++
+2pDBGd28jAPHIAJHPitu4opbUoDJAyB71z3P1XLv9xkPTWCw8c/SVHCADjaARkYos5E3B26MNzi1
+en33lusqeQkLKiQtwA7yM/BTz9qqFJPSmMlrSi3wBmRKcVlPG7GE5+/Bp2q/Jv309FN+zoUUUVAh
+E6mall2iLGgQXiw5KClLdQcLSlJHAPjJPf4qXyY79yWqbPkPPSFYytayVEAcZNVLqZZoD9rRdpCn
+hIjYbZCFDarcc/UD448VMluq25zkGodpnq02unNfXPTjbUbamXAaTtTHVhJSM5yFAd+T3zVX0vqe
+Fqq2mZEStstr9N1pwjchXfx4I7GuenSoKKcftT30hcaiXqYp+6tsKfbCEQ1cF45yFAnjI5GBzyaS
+1zGPNLJRXlFaFiD1G3XybatLw5oYfkv73SeyE7Tgn3PcgZ8UjXiII1xlRwz6AacKA332gcD+Of1q
+1uWi3u3Rq6LiNKmsoKEP4+oJPj+T+5qCTbsXrlM3gqK33FJO7nBUajRnow1x3yX1MoKgGVFzAztR
+xk/HjmsHeCzk+BX3Mm+mr6FELUkjCVeD3zWrL7qAoFQUDWXbb+GiX5RXOleqLnLuv9HmzVyGDHUt
+oO/UpKgU8BXfGCeDRSRoO+N2zVkKS4dqUhxKs+xQr/sCitcuIOToK6T2bZbJEx9YQhpBOT7+B9yc
+Vzixbpdyvke3Rwn8TIXtb3Kwndgnk+3FXnXg/si6nylgkfBBGDUZ0A3Il9Q7WUpK/TcUtWOyUhCs
+n+RTapL7FOZHlRJC0Sm1JcCiFE9sg471+TaVuupbbQpa1kJQhIyVE9gB5NO/UW0O2S+OQUg/hXMO
+sKJydp7jPwcj9qpuhtHWKLaLTek2xlNxVDbUp/nOSkZVjsCffGaSXwadFvRPSFtpCbjqZPqOqT9E
+JKiA3kd1qHc/A4HzRVYoqohir1Hnsw9HS2Xd+6WPRbKU5G488nxwDSl0bgw/xNymqebMwBLSGs/U
+lvuVY9icD9K1uvdUXG7z12lcZxlDTm1EQJKlqUPzHHc+2OOf1pu6Wadl2a0yZNwgJiyZTmU7wfV9
+MDgK9hnJA/el2xKPkwOsEZT8KAtMJaktKXukpGQgHACT9zz+lbPpZepF1088xKeStcJ1LLaQjbtb
+CBtzjv2PzWXrqzXy9Q2mLWtpTCSS6ypewrPjnsR8VnaQ0y1peziMFByS8fUkuj8y8ePgdh/7RORm
++oooqgFNj/J8n/Xt/wDKqaxRRQB7RRRQAUUUUAf/2Q==
+
+            </field>
+            <field name="name">Adamant armor</field>
+            <field name="defense">35</field>
+            <field name="price">35000</field>
+            <field name="material">6</field>
+        </record>
+
+
+
+                <record id="mithril_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABRACcDASIA
+AhEBAxEB/8QAHAAAAwEBAAMBAAAAAAAAAAAAAAYHBQgBAwQC/8QAMxAAAQMDAwIEBAQHAQAAAAAA
+AQIDBAAFEQYSIQcxE0FRYRQicZEygbHBIyU3QlJ0gqH/xAAYAQEBAQEBAAAAAAAAAAAAAAAAAQMC
+BP/EAB4RAAICAwADAQAAAAAAAAAAAAABAhEDITESIkEy/9oADAMBAAIRAxEAPwCzVi6nvUO02p1L
+8wRn321Nsd928jAIxyACRz5VsLJShRAyQMgVzxc9TyL/AHGRJlpKHVeW7hAyRtHoBXeNJvYHvoyz
+cvh7tIlPuORlvJQgqWVBTgzvUM/VPPnVOpH6SslvSC3M5D0t1SfTjA/UGnirll5TbK3bsKKKKzII
+nU3VEyyRI0K3u+C9LCit1J+ZCU4/D6Ek9/apPIakXJa5s9916QvutasqIHbJqqdUrJAftqLy+6+m
+SxtZZQhQ2KyrPzAj69vSpgtxW3OQQa9GJJohu6V6hT9MsIhOMiZb0DCGshKm+c/KrHP0P3qtaa1H
+B1RahPhbkgKKHG3Mbm1DyOPyP0Nc5LKgopwafukD7UK8zPHu7LAkICUwlggvKHZQJ4yMkYHJzWU3
+FOvpaZZqKKK4BPepP88uVm0vGkhp+RI8R1ZPCEYI5HmSN2B7UhXtnbdpqCyGSl5afDAwE4OAKuTl
+ntzt1aurkRpU1lBQh8j5kpOeP/T9657k3RcibJW9lxbjq1bs8nKjW+JojPnLTwU8W0FQ8JW/Cc7U
+8ZPt5c18e/8Ah8+Qr9SZZZWSlRC1JKdqVeR75rN8dxOckEGsJS9261w7S0WDpVqy5zbkbLOlGQyI
+5cZU5ytJSRxu7kYPn6UUjaAvTdr1fClOHakJcQrPoUH9wKKmlwh0Dd7gxarVImyF7W2kE58yewA9
+ycVzbEt0q53yNbYwT8TIXtb3HCc4J5PpwavuvkNq0RdS4nOxgrT7KByD96i3T9p+V1EtRSCsodUt
+WP7UhCsn9K0X5ZPoqyGZDDig+2pKs85FelAU44ltCVLWogJSkZJJ7ADzNOnUOzO2G+OwEbjGWkOs
+LV+IpPkT7EEfaqvpLRmnY0K2Xtq1MpuC4jSy8M8KKBlQTnAJ9QKjVVXBYr6H6RNNNpuOpkb3VJ+S
+ElRAbyO6yO6vYcD3oqsUVyBS6k3JiFpGVGdDm+cgstFKMjd35PlwDSp0Zt0X4q53BTqDKSEtIbz8
+yEHkqx6EgD/msbW+qbhf7iq3LjuNNsulLcMJKllY4yQOSr6ds/nTv0s09Mstmkv3CCmK/LdCkhYP
+i7AMAK545yQPfmq7WgZXWOI5JZguoguKSyFb5QTlKQSAEHHbnnn962+l17eu2mVMyXkuPQnPBACN
+u1sJGz68A817dfWW/XuIzHtSmlRwSXWVObFLV5c9iB6frWlpLTDGl7QIqFBx9w+JId/zXjy9AOwq
+VroN2iiigE6N/Ved/ot/vTgO1FFAeaKKKAKKKKA//9k=
+
+
+</field>
+            <field name="name">Mithril armor</field>
+            <field name="defense">30</field>
+            <field name="price">30000</field>
+            <field name="material">5</field>
+        </record>
+
+
+                <record id="black_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABSACcDASIA
+AhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAcGCAEEBQMC/8QALxAAAQMDAwMDAgYDAQAAAAAA
+AQIDBAAFEQYSIQcxQRNRYSJxFBUyQpGhUoHwwf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAc
+EQEAAwADAQEAAAAAAAAAAAAAAQIREiFBAzH/2gAMAwEAAhEDEQA/AHNXH1Ldolqs75kTmojrzam2
+FLXtJcIwMee5HPiuo8stMLcA3FKSQPfAqsmodTytTXZ64S8pUvhDZVkMp8IH/cmnHUnBqdGBPNuu
+zkp1xxpUlKUFSyoFYB3kZ+6cnzTLpe9FkkaLeWVE75rmOeBgJFMKq+ludpsLTs6KKKKgi56sa3m6
+cYjWy1r9GXMQpa3x+ppAOPpHuTnnxg0mJ0mZdpC51wkrfkuAbnFAZOO3am11l07Cdit6ielvIkNp
+RFbZSgFCzuUrk9xxu/qlEVkD4NBwlWjOp1x0qlEJ9kTLYhJCWAEoWgk5yFY55POf6p06U1bbtX21
+c2AHEemv03WnQAtCsZ5wTwR2NVkZa9V8NnPJ8c0y+jHow79MLt3bZU62G0Q1cF85yFZPGRyMDnk1
+PKNw8607aKxRVJLbqig6hu1k0lDmNIkSHlOuoUR9CQk4UfnG/A80qb/FEW+z46Yv4UNSFoSx/gAc
+Afxg/wC6sS7pi0valb1C5FCrg016aHCo4A55x2zgkZ+arVcLi5LuUyQ+pS3HX3FlfvlRpHD3076z
+d8T6UVUjey62tKU5KUKbUkq+Nuc5+K01LKX8g4OQcivSFJdiOqlJWpv6FIyDgkKGCPsQSD961FvF
+bhVjHtWUztleHB0o1jdLjdnbHcJRkNJjlxhbnKwUkDG7yMHz7UVBOnt2RadaQ5jpwja4hWfYoP8A
+6BRWlcxM/qxF0nx7XbZE2W8llllBUpajwP8AjVWrVbn7veotuaSPWlOhCQo4GT7nxViuo0duRoG7
+h1JPpxy6nBxhSTuB/kUjeniVu9QbNtSVESNxwM4ASrJqhDhTG3WZDkd1GxTKy2Uj9pBwR/IrX7Cp
+P1AsDmmdTPQgta2HR67Di/1KQong+5ByP7praP6eac/LrPfXYG6aqM08QXFFv1CkHds7Zzz7ZqIr
+nR6j/T/pQhxhF21I2o+onLMLJSQCP1LI5zjsnx59qKb9FVkJRPqZcYsPRFxjvu7XZjC2mEhJJWrv
+jj496hfRCxNKdn310oLqMR2UZ+pAPKlEeM8AfY1y+oWvHNRTfyqOwY0GI8SS6na4tacjJH7QMkAd
+/f2qV9HbSpi3zrm/DcbXIWENPuKILjY7gJ8AHz5/1Rs6fjV62wBLiW1xEdfqtKXmRtOxKCB9JOO5
+OCPsakPS+9yLxppTUlbBVBWmOhLYwdiUJAKhnzzz8V8dTbfqW62ZuFYo4eYcJMpKHAlxQGNqRnAI
+z35zwK39BaXOl9PIYf5mSMOyTnICscJH2HHyc0ZOjxJ6KKKZIKi2wH+rElT0GO4r8C05lbSSd+VD
+dyO/A5+KnIoooDNFFFAFFFFAf//Z
+
+
+</field>
+            <field name="name">Black armor</field>
+            <field name="defense">25</field>
+            <field name="price">25000</field>
+            <field name="material">4</field>
+        </record>
+
+
+                <record id="steel_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABSACcDASIA
+AhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAAYHBAUBA//EADAQAAEDAgUCBgECBwAAAAAAAAEC
+AwQAEQUGEiExBxMiMlFhcYFBFaEUIyRSkbHB/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIAA//EABsR
+AQEBAQADAQAAAAAAAAAAAAABEQISIUEx/9oADAMBAAIRAxEAPwCzVwM44izDy/LYMosSZLKm2CkK
+uFEWB8IJAHr+K7riiltSgLkAm1RRzOLuOznxJjfwzxQFnx3Cfxpta+1MuXTP01dG2JSMtzXn1qU2
+9MV2tRO9gAo7+9/8VQ6U+nDenLS1hWpLkp1QP2Af3Bpsqu+vLq9Nbt0UUUVAKGdMxyMOcbgRHe0t
+aO4txPmAvsB6cGkKThzmKqXiE951UhewUT4ikcXpyz9hEcLbxZUhxLp0tdrSClVrm59Nr0ruvuBJ
+OxBoXGvAM1TMusJjIQJMNAsllR0lG99jb/dP+XcxxMxw3H46VNraXocaWQSk8jj8GorNkuNJXoF1
+AEgUydL5cVjG3n5eJCK5JaDbUZQsl/e99R2uPwOdzR5SXBYr1FeUVSSJnliXjmYcIwOFKS0FFS5F
+zwnn7OkKsPeuHiDAD7yQ12vGr+X/AG78fVUg4Lh/6z+sln+sCNHcKjYC1r24vba9ShzGDIkPB4qU
+4palXB5uTWVyyNsvIkvlEcPBUV5K0keVJQQVe1ua4ERaXMM0OJCgAoWPtWnGMSciOhbD623VJUjS
+hVyUkEEH5B4pdL0qNqUhaShXmRXG++lfFZ6W5ixGRLbwqZMXIYXFLjQd8SkKBTsFc2sTsfSikjIm
+YGcNzFBddugtBaFauCChX/bUVfNmJq/YlIRFw6Q8tQSEtqsT622/eoWxCkz8wxMPYsH3V2TqNhcA
+nf22qv53FspTnB5m0pUk+h1CpTkx6Q5n/DHFArPcUCAOAUKuaoQmzmpsWWtU9pSHCbareH4BrMHC
+64LAqsbJAF9RqidQoT+HT3IFtTKgHW3FclJvt9EEU+5cyFlyEYOMt4ahM4MIXq1K0JWUi6gi9gfr
+aiTPRtLWSulLSUIxPMzQcdWm7cK+zYI5WRyr24HueCqnRVYkt58mxY+WX4zzyUOyrIZSeVkEEgfQ
+pa6WYXGXJnYoXG1vNnsIQFAlAO5JH4vsB8GsPUTNLOIRFRO2BHbX4NeylLFxf2A3rr9JMHMTBZGJ
+PwVMPS3LIdWo6nGhx4T5Re/zzU77V8Z+q7iEmEFxHSAhd5AT4Rciyb+uxNd7p1j0nHsuKdmKaL0d
+4s6W06bJAGm4+K05wh4pOgIYgsB9om7rYUApVuOdrV9so5eTlzBUxlEKkPLL0hQ4KzyB7AAAfFOX
+R8dyiiikEtECE91Pkd2IwvRES4nU2DpUeVDbn3pzHFFFYvaKKKwFFFFZn//Z
+
+</field>
+            <field name="name">Steel armor</field>
+            <field name="defense">20</field>
+            <field name="price">20000</field>
+            <field name="material">3</field>
+        </record>
+
+
+                <record id="iron_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABRACcDASIA
+AhEBAxEB/8QAHAAAAwEAAwEBAAAAAAAAAAAAAAYHBQEDCAIE/8QANhAAAQMDAgQEBAMIAwAAAAAA
+AQIDBAAFEQYhBxIxQRMiUWEUcYGRQrHBFSMyN1KFoaKy0fD/xAAXAQEBAQEAAAAAAAAAAAAAAAAC
+AAED/8QAGxEBAQEAAwEBAAAAAAAAAAAAAAERAiFBEiL/2gAMAwEAAhEDEQA/ALNS/rK7xbdYJTC5
+nw8mSytuPjm5uYjAO24AJ69q3ycJJ64rz7cdWPX+6SHZLZadOcAqyEAHHKPlWy5dbD/waZlp03Mf
+kKUpp6WS0VKJzgAKI+v5GqJSdwtbCNHJUDkOSXVf7Y/SnGlz5fXK8lbt0UUUUGEfiHqaTaksW6C8
+ph55PiOOoOFJSDgAemSD9ql8uKu4urmy3nHH3DkrUck/M1R+J1liKjt3pyQ6h9PKwlsAFKxknf07
+/wCKni3VAE7EVhRuaf1zctPMtReVEqE0jkSwoBBSPUKA6/PNVDTWo4mp7Z8bFSpspWUOtLIKm1Ds
+ceowQagLriyVJQkkgFRwOw6mnbhLKhxLpLXJu6Y70lIbRCWOVLuNwrmOxI3AA33NZ9SXFZ6sFFcU
+UhT/AIkKcu9wtGnIbyEvyHudzmOyRggZx7cxpIucXwJ0lnwAwUOKT4Q/Bg9KtC7Nbf2wL0qMPjUN
+lAd5jsn5dM42z1qEuXBTz7viqKlrUpWSdzk5qKPmE3IRKk+DHL4XEeQ4kDdKCndXtjANY6VjwMKG
+cCu6VKEd3xAtSVYIHIrB3GP+8+1ZC5LqebBSUq7elcbf0Xiv8JtQTZMyTaZUx19pMcOsJdVzFGDg
+gE743G3tRSFoXUbVl1TFlv8AkbCVoXk7YKD+oFFdJZgWPQN6ns220SZT6+VCGz9SdgPvXn+32166
+6jh21oo8R5eAVk8uQkncjfG1W7XSQrRd0yASlnmHsQRg1IeHbD8jiDb1pSVeEXHFn+lIQRn7kfek
+oULjHnRpCvimlAglORun6V+NJLiwEgrUThISMkn0p84h2dyzXt+IjPwrg8ZgnrynO2fY5H2qtWbS
+tiDVuuhtMX49qO2Q+GgFc3KPN7n360Zxzptpd4dcN2bLFRdLzHQ7cnU+VpYCkx0ntjurHU9ug75K
+otFISrxEubMHS0hh1t0mYCyhaE5SlXXzHt0pY4PsQfHucjxkKm+VAa/ElvrzfIq2+lY2vNS3C73F
+dtXHdaQ04UNwwklalepA6n0x2O3rTjwu07NslnkPXGC3GkSnQpOR++5ANgs9t8kDtnej3rfGfxbi
+yZDMN5FvU5HYSrxJKd+UqIASe+Ns/WtnhneJV40ypc2Qp99h9TRJQE8qQByjbrt+ddut9P3a/R2E
+W+QyG28lbDhKedXY5Gem+1a2m7FH07Zmbex5inzOuY3ccP8AEo/+6AVudrxq0UUVrCcP5s/2wf8A
+I04J6UUVJzRRRUhRRRUn/9k=
+
+
+</field>
+            <field name="name">Iron armor</field>
+            <field name="defense">15</field>
+            <field name="price">15000</field>
+            <field name="material">2</field>
+        </record>
+
+
+                <record id="bronze_armor" model = "runescape.armor">
+            <field name="armor_image">
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIf
+IiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7
+Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCABSACcDASIA
+AhEBAxEB/8QAGwAAAwEBAQEBAAAAAAAAAAAAAAYHBQgDAQL/xAAzEAABAwMCBQMBBQkAAAAAAAAB
+AgMRAAQFBiEHEjFBURMUgWEWIjJicRUjJFORobHB0f/EABgBAAMBAQAAAAAAAAAAAAAAAAECAwAE
+/8QAHhEAAwACAgMBAAAAAAAAAAAAAAECESESMQMiQVH/2gAMAwEAAhEDEQA/ALNS/q/O2uIw1w0u
+9TbXdyytFtuZCyICtgSACevat15ZbZWsCSlJMeYrnLJaof1FkX7y5TyOubgBUhA6co/Sldcd4GlZ
+eyj8GGr79k5O5uXluW7tyA0VLJlQB5zB8kjfvFUmkfhIyW9GqcmQ9durH9k/5Bp4ql3zp1+gp5YU
+UUUoCd8TNZX2GdZxONe9B11v1XXk/jSJIAHiYO9Sy6bfyTq72+fdcuF9VqO5Haao3FjAWiXGc6q6
+eFwvlYDHKChUSZnqNp89qni1qG+xFct8uTLwlg3NL8RMnplhqzLSLzHtJKUsKhCkbzsoD9es1W9J
+6rstW41d3atrZWy56brLhBUgxI6diOhrnYhRd5ACZnp4p54QPsWWobtVxlm7cPtBtFqsR66pkGTs
+CN9upmt4rrOKFuV2i20V8orqJE84hM/aPUOF03Z3KEXHqKefSvdIRE7/AJoCoH1qc5JnlvrlPoe3
+h1f7n+Xufu/HSrorTeL+0Y1CWT75Lfp8/OeWIieXpMbT4qA3WVXeX1y8+pSnHXVrKh3kmuby67K+
+M9cH6jOYPLbl9Ltu80tITJSlTagV/SOs+JrFCtjNe67tds4X0uKbPKUgA77iCPkGIrLNysrJ7HtS
+rYz0V3hPqrJXmUXhb27VcMe3K2PU3UgpI2CusQeh8UUj6AzTeJ1dZXThhIS4lU+Cg/7Aoq8PCJV2
+dB5q9ax2Hurp5wNobaUZPmNh8mK5sxuMusrnLXGW6R7h9XKkFUDYE9firxxJbSrQmRWRKmghaD4I
+WP8AtRvh4+8riPiVcpXLiwQkdAUKk0lrNJDTpCvdJeS6Q6gpjaOwrxidqb+IWKdwOefxoClsKh1l
+xXVSD5+oMj4qn6L0Fp0YvD5xzGpN+bZp4qK1cnOUg83JMT36dd60L4Zv6YeguE7SGG8pqRrnccRL
+diZAbBHVflUdu3ffoVWOlFWwhMilxNvba30Ve2zzyUO3SQhlB6rIUCQPgUo8GME2q4v826Ulbf8A
+DspkEpndSo7TsB81n8QdbDPL9gw36VlbuyFLELWsSJ/KOu39fFNPCLDqtcPc5N+0caeu3OVDriiC
+todITGwmd+9TXteRupwZnGi2Q8casWywtKVg3HL9yDEInzImmbhnm3MzpVKXvSC7FftgGxH3EpTy
+k/U1+OJFpnb/ABLVpibNVxbrUVXIbUOcx+EQeonfbwK0tFabGmcAi1cPNcvK9W4UDI5yBsPoAAPi
+aKXs2Bv1GGiiiqCiKzjbBzivd89lbqizQ6OZpJhZmVdOv1p5FFFLIQr7RRTACiiisY//2Q==
+
+
+</field>
+            <field name="name">Bronze armor</field>
+            <field name="defense">5</field>
+            <field name="price">3000</field>
+            <field name="material">1</field>
+        </record>
+
+
+
+<!--
+          <record id="object0" model="runescape.runescape">
+            <field name="name">Object 0</field>
+            <field name="value">0</field>
+          </record>
+
+          <record id="object1" model="runescape.runescape">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+
+          <record id="object2" model="runescape.runescape">
+            <field name="name">Object 2</field>
+            <field name="value">20</field>
+          </record>
+
+          <record id="object3" model="runescape.runescape">
+            <field name="name">Object 3</field>
+            <field name="value">30</field>
+          </record>
+
+          <record id="object4" model="runescape.runescape">
+            <field name="name">Object 4</field>
+            <field name="value">40</field>
+          </record>
+-->
+    </data>
+</odoo>

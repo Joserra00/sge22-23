@@ -25,9 +25,9 @@
       <field name="arch" type="xml">
         <tree>
             <field name="sword_image" widget="image"/>
+            <field name="name"/>
           <field name="damage"/>
           <field name="price"/>
-          <field name="name"/>
         </tree>
       </field>
     </record>
