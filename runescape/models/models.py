@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
 
 class player(models.Model):
     _name = 'runescape.player'
@@ -27,8 +27,17 @@ class player(models.Model):
     armor_price = fields.Integer(related='armor.price')
     strength = fields.Integer(default=5)
     city = fields.Many2one('runescape.zone')
+    dungeon = fields.Many2one('runescape.dungeon')
 
 
+    @api.constrains('city')
+    def _player_location(self):
+        for s in self:
+            if len(self.city)>0 and len(self.dungeon)>0:
+                raise ValidationError("No puedes estar en una zona segura y una Dungeon a la vez")
+        # all records passed the test, don't return anything
+
+   
 
 
 
@@ -43,7 +52,7 @@ class armor(models.Model):
     defense=fields.Integer()
     price = fields.Integer()
     name = fields.Char()
-    armor_image = fields.Image(max_width=100, max_height=100)
+    armor_image = fields.Image(max_width=50, max_height=50)
 
 class sword(models.Model):
     _name = 'runescape.sword'
@@ -60,7 +69,7 @@ class zone(models.Model):
     _description = 'Runescape city'
 
     name = fields.Char()
-    avatar = fields.Image(max_width=200, max_height=200)
+    avatar = fields.Image(max_width=100, max_height=100)
     price = fields.Integer()
 
 class dungeon(models.Model):
@@ -68,9 +77,19 @@ class dungeon(models.Model):
     _description = 'Runescape city'
 
     name = fields.Char()
-    avatar = fields.Image(max_width=200, max_height=200)
+    avatar = fields.Image(max_width=100, max_height=100)
     price = fields.Integer()
-    mob = fields.One2many('runescape.mob','dungeon')
+    mob = fields.One2many('runescape.dungeon_mob_rel','dungeon')
+
+class dungeon_mob_rel(models.Model):
+    _name = 'runescape.dungeon_mob_rel'
+    _description= 'Runescape rel'
+
+    name = fields.Char(related="mob.name")
+    dungeon = fields.Many2one("runescape.dungeon")
+    mob=fields.Many2one('runescape.mob')
+    qty=fields.Integer()
+
 
 class mob(models.Model):
     _name = 'runescape.mob'
@@ -82,7 +101,7 @@ class mob(models.Model):
     strength = fields.Integer()
     defense = fields.Integer()
     hp = fields.Integer()
-    dungeon = fields.Many2one('runescape.dungeon')
+    dungeon = fields.Many2many('runescape.dungeon')
 
 
 

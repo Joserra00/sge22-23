@@ -112,6 +112,18 @@
         </tree>
       </field>
     </record>
+       <record model="ir.ui.view" id="runescape.dungeon_mob_rel_list">
+      <field name="name">runescape </field>
+      <field name="model">runescape.dungeon_mob_rel</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="name" />
+            <field name="dungeon"/>
+          <field name="mob"/>
+          <field name="qty"/>
+        </tree>
+      </field>
+    </record>
 
 
     <!-- actions opening views on models -->
@@ -119,7 +131,7 @@
     <record model="ir.actions.act_window" id="runescape.action_player_window">
       <field name="name">runescape</field>
       <field name="res_model">runescape.player</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
         <record model="ir.actions.act_window" id="runescape.action_armor_window">
       <field name="name">Armor</field>
@@ -132,7 +144,7 @@
       <field name="view_mode">tree,form</field>
     </record>
    <record model="ir.actions.act_window" id="runescape.action_zone_window">
-      <field name="name">Zona</field>
+      <field name="name">Safe Zone</field>
       <field name="res_model">runescape.zone</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -180,7 +192,7 @@
               action="runescape.action_armor_window"/>
       <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
               action="runescape.action_sword_window"/>
-    <menuitem name="Zona Segura" id="runescape.menu_zone_list" parent="runescape.menu_game"
+    <menuitem name="Safe Zone" id="runescape.menu_zone_list" parent="runescape.menu_game"
               action="runescape.action_zone_window"/>
           <menuitem name="Dungeon" id="runescape.menu_dungeon_list" parent="runescape.menu_game"
               action="runescape.action_dungeon_window"/>

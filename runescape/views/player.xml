@@ -1,45 +1,85 @@
 <odoo>
-<data>
-<record model="ir.ui.view" id="runescape.player_list">
-      <field name="name">runescape list</field>
-      <field name="model">runescape.player</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="avatar" widget="image"/>
-          <field name="name"/>
-          <field name="coins"/>
-          <field name="strength"/>
-        </tree>
-      </field>
-    </record>
-     <record model="ir.ui.view" id="runescape.player_form">
-      <field name="name">runescape list</field>
-      <field name="model">runescape.player</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-                <group><field name="avatar" widget="image"/>
-                <field name="name"/>
-                <field name="password" password = "true"/>
-                <field name="hp"/>
-                    <field name="coins"/>
-                <field name="strength"/>
-                    </group>
-                <group>
-                    <field name="armor_image" widget="image"/>
-                    <field name="armor" mode="tree"/>
-                    <field name="defense"/>
-                    <field name="armor_price"/>
-                    <field name="sword_image" widget="image"/>
-                    <field name="sword" mode="tree"/>
-                    <field name="damage"/>
-                    <field name="sword_price"/>
-                </group>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
+    <data>
+        <record model="ir.ui.view" id="runescape.player_kanban_view">
+            <field name="name">Runescape player</field>
+            <field name="model">runescape.player</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill" >
+                                 <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block "
+                                                         t-attf-style="background-image:url('#{kanban_image('runescape.player', 'avatar', record.id.value, placeholder)}')">
+                                                    </div>
+
+
+                                    <div class="oe_kanban_details d-flex flex-column" >
+                                        <a type="open">
+                                            <h4 class="o_kanban_record_title oe_partner_heading">
+                                                <field name="name"/>
+                                            </h4>
+                                        </a>
+                                        <ul>
+                                            <li>City:
+                                                <field name="city"/>
+                                            </li>
+                                            <li>Dungeon:
+                                                <field name="dungeon"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+
+
+
+                        </t>
+                    </templates>
+
+
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="runescape.player_form">
+            <field name="name">runescape list</field>
+            <field name="model">runescape.player</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="avatar" widget="image"/>
+                                <field name="name"/>
+                                <field name="password" password="true"/>
+                                <field name="hp"/>
+                                <field name="coins"/>
+                                <field name="strength"/>
+                            </group>
+
+
+                            <group>
+                                <field name="armor_image" widget="image"/>
+                                <field name="armor" mode="tree"/>
+                                <field name="defense"/>
+                                <field name="armor_price"/>
+                                <field name="sword_image" widget="image"/>
+                                <field name="sword" mode="tree"/>
+                                <field name="damage"/>
+                                <field name="sword_price"/>
+                            </group>
+                            <group>
+                                <separator string="Location"></separator>
+                                <field name="city"/>
+                                <field name="dungeon"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
     </data>
 </odoo>
