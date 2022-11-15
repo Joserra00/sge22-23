@@ -28,6 +28,8 @@
         'views/views.xml',
         'views/player.xml',
         'views/templates.xml',
+        'views/mob.xml',
+
         'demo/demo.xml',
         'demo/demo_sword.xml',
         'demo/demo_armor.xml',

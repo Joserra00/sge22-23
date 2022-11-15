@@ -74,7 +74,7 @@ class zone(models.Model):
 
 class dungeon(models.Model):
     _name = 'runescape.dungeon'
-    _description = 'Runescape city'
+    _description = 'Runescape dungeon'
 
     name = fields.Char()
     avatar = fields.Image(max_width=100, max_height=100)

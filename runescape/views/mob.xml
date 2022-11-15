@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="runescape.mob_list">
+      <field name="name">runescape mob</field>
+      <field name="model">runescape.mob</field>
+      <field name="arch" type="xml">
+        <tree>
+              <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="damage"/>
+                <field name="hp"/>
+                <field name="defense"/>
+                <field name="strength"/>
+        </tree>
+      </field>
+    </record>
+    </data>
+</odoo>

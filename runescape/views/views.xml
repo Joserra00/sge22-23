@@ -75,43 +75,8 @@
         </form>
       </field>
     </record>
-        <record model="ir.ui.view" id="runescape.dungeon_form">
-      <field name="name">runescape dungeon</field>
-      <field name="model">runescape.dungeon</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-                <group>
-              <field name="avatar" widget="image"/>
-                <field name="name"/>
-                <field name="price"/>
-                    </group>
-                <group string="MOB">
-                <tree>
-                    <field name="mob"/>
-                </tree>
-                    </group>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-      <record model="ir.ui.view" id="runescape.mob_list">
-      <field name="name">runescape mob</field>
-      <field name="model">runescape.mob</field>
-      <field name="arch" type="xml">
-        <tree>
-              <field name="avatar" widget="image"/>
-                <field name="name"/>
-                <field name="damage"/>
-                <field name="hp"/>
-                <field name="defense"/>
-                <field name="strength"/>
 
-        </tree>
-      </field>
-    </record>
+
        <record model="ir.ui.view" id="runescape.dungeon_mob_rel_list">
       <field name="name">runescape </field>
       <field name="model">runescape.dungeon_mob_rel</field>
@@ -124,6 +89,7 @@
         </tree>
       </field>
     </record>
+
 
 
     <!-- actions opening views on models -->
@@ -151,7 +117,7 @@
        <record model="ir.actions.act_window" id="runescape.action_dungeon_window">
       <field name="name">Dungeon</field>
       <field name="res_model">runescape.dungeon</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
        <record model="ir.actions.act_window" id="runescape.action_mob_window">
       <field name="name">Mob</field>

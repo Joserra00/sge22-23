@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+<record model="ir.ui.view" id="runescape.dungeon_kanban_view">
+            <field name="name">Runescape dungeon</field>
+            <field name="model">runescape.dungeon</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill" >
+                                 <div class="o_kanban_image_fill_left o_kanban_image_full d-none d-md-block "
+                                                         t-attf-style="background-image:url('#{kanban_image('runescape.dungeon', 'avatar', record.id.value, placeholder)}')">
+                                                    </div>
+
+
+                                    <div class="oe_kanban_details d-flex flex-column" >
+                                        <a type="open">
+                                            <h4 class="o_kanban_record_title oe_partner_heading">
+                                                <field name="name"/>
+                                            </h4>
+                                        </a>
+                                        <ul>
+                                            <li>Price:
+                                                <field name="price"/>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+
+
+
+                        </t>
+                    </templates>
+
+
+                </kanban>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="runescape.dungeon_form">
+      <field name="name">runescape dungeon</field>
+      <field name="model">runescape.dungeon</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <group>
+              <field name="avatar" widget="image"/>
+                <field name="name"/>
+                <field name="price"/>
+                    </group>
+                <group string="MOB">
+                <tree>
+                    <field name="mob"/>
+                </tree>
+                    </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    </data>
+</odoo>
