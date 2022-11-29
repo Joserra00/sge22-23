@@ -6,3 +6,4 @@ access_runescape_zone,runescape.zone,model_runescape_zone,base.group_user,1,1,1,
 access_runescape_dungeon,runescape.dungeon,model_runescape_dungeon,base.group_user,1,1,1,1
 access_runescape_mob,runescape.mob,model_runescape_mob,base.group_user,1,1,1,1
 access_runescape_dungeon_mob_rel,runescape.dungeon_mob_rel,model_runescape_dungeon_mob_rel,base.group_user,1,1,1,1
+access_runescape_travel_dungeon,runescape.travel_dungeon,model_runescape_travel_dungeon,base.group_user,1,1,1,1

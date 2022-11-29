@@ -11,6 +11,7 @@
                 <field name="hp"/>
                 <field name="defense"/>
                 <field name="strength"/>
+               
         </tree>
       </field>
     </record>

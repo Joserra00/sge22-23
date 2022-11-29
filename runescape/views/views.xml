@@ -60,21 +60,7 @@
         </tree>
       </field>
     </record>
-       <record model="ir.ui.view" id="runescape.zone_form">
-      <field name="name">runescape zone</field>
-      <field name="model">runescape.zone</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-              <field name="avatar" widget="image"/>
-                <field name="name"/>
-                <field name="price"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
+
 
 
        <record model="ir.ui.view" id="runescape.dungeon_mob_rel_list">
@@ -89,6 +75,48 @@
         </tree>
       </field>
     </record>
+      <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_list">
+      <field name="name">runescape </field>
+      <field name="model">runescape.travel_dungeon</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="player" />
+            <field name="travel_to"/>
+            <field name="dungeon"/>
+            <field name="zone" />
+
+
+        </tree>
+      </field>
+    </record>
+
+      <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_form">
+      <field name="name">runescape </field>
+      <field name="model">runescape.travel_dungeon</field>
+      <field name="arch" type="xml">
+          <form>
+             <header>
+              
+            </header>
+              <sheet>
+        <group>
+            <field name="player" />
+            <field name="travel_to"/>
+            <field name="dungeon" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+            <field name="zone" attrs="{'invisible':[('travel_to', '=', '2')]}"/>
+            <field name="date_start"/>
+            <field name="date_end"/>
+            <button name="battle_mob" type="object" string="Battle" class="oe_highlight" attrs="{'invisible':[('travel_to', '!=', '2')]}" />
+            <field name="mob" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+           
+
+        </group>
+              </sheet>
+          </form>
+      </field>
+    </record>
+    
+
 
 
 
@@ -112,17 +140,22 @@
    <record model="ir.actions.act_window" id="runescape.action_zone_window">
       <field name="name">Safe Zone</field>
       <field name="res_model">runescape.zone</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
        <record model="ir.actions.act_window" id="runescape.action_dungeon_window">
       <field name="name">Dungeon</field>
       <field name="res_model">runescape.dungeon</field>
-      <field name="view_mode">tree,form,kanban</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
        <record model="ir.actions.act_window" id="runescape.action_mob_window">
       <field name="name">Mob</field>
       <field name="res_model">runescape.mob</field>
       <field name="view_mode">tree,form</field>
+    </record>
+      <record model="ir.actions.act_window" id="runescape.action_travel_dungeon_window">
+      <field name="name">Travel</field>
+      <field name="res_model">runescape.travel_dungeon</field>
+      <field name="view_mode">tree,form,calendar</field>
     </record>
 
 
@@ -149,21 +182,24 @@
     <!-- menu categories -->
 
     <menuitem name="Menu" id="runescape.menu_game" parent="runescape.menu_root"/>
+    <menuitem name="Battle" id="runescape.battle_game" parent="runescape.menu_root"/>
 
     <!-- actions -->
 
     <menuitem name="Player list" id="runescape.menu_player_list" parent="runescape.menu_game"
               action="runescape.action_player_window"/>
-      <menuitem name="Armor " id="runescape.menu_armor_list" parent="runescape.menu_game"
+    <menuitem name="Armor " id="runescape.menu_armor_list" parent="runescape.menu_game"
               action="runescape.action_armor_window"/>
-      <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
+    <menuitem name="Sword " id="runescape.menu_sword_list" parent="runescape.menu_game"
               action="runescape.action_sword_window"/>
     <menuitem name="Safe Zone" id="runescape.menu_zone_list" parent="runescape.menu_game"
               action="runescape.action_zone_window"/>
-          <menuitem name="Dungeon" id="runescape.menu_dungeon_list" parent="runescape.menu_game"
+    <menuitem name="Dungeon" id="runescape.menu_dungeon_list" parent="runescape.menu_game"
               action="runescape.action_dungeon_window"/>
-          <menuitem name="Mob" id="runescape.menu_mob_list" parent="runescape.menu_game"
+    <menuitem name="Mob" id="runescape.menu_mob_list" parent="runescape.menu_game"
               action="runescape.action_mob_window"/>
+    <menuitem name="Travel" id="runescape.menu_travel_dungeon_list" parent="runescape.battle_game"
+              action="runescape.action_travel_dungeon_window"/>
 
 
 

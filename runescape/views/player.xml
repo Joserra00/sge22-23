@@ -22,25 +22,36 @@
                                             </h4>
                                         </a>
                                         <ul>
-                                            <li>City:
-                                                <field name="city"/>
+                                            <li>Strength:
+                                                <field name="strength"/>
                                             </li>
-                                            <li>Dungeon:
-                                                <field name="dungeon"/>
+                                            <li>Coins:
+                                                <field name="coins"/>
+                                            </li>
+                                             <li>Hp:
+                                                <field name="hp"/>
                                             </li>
                                         </ul>
                                     </div>
-
-
                                 </div>
-
-
-
                         </t>
                     </templates>
 
 
                 </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="runescape.player_search">
+            <field name="name">runescape search</field>
+            <field name="model">runescape.player</field>
+            <field name="arch" type="xml">
+            <search>
+            <field name="name"/>
+            <field name="travel_name"/>
+            <field name="travel_type"/>
+            <filter name="group_travel" string="Group By Travel" context="{'group_by': 'sword'}"/>
+        </search>
             </field>
         </record>
 
@@ -59,25 +70,61 @@
                                 <field name="coins"/>
                                 <field name="strength"/>
                             </group>
+                            <notebook>
+                                <page name="inventory" string="Inventory">
                             <group>
                                 <field name="armor_image" widget="image"/>
-                                <field name="armor" mode="tree"/>
+                                <field name="armor"/>
                                 <field name="defense"/>
                                 <field name="armor_price"/>
                                 <field name="sword_image" widget="image"/>
                                 <field name="sword" mode="tree"/>
                                 <field name="damage"/>
                                 <field name="sword_price"/>
+
                             </group>
+                            </page>
+                                <page string="Buy inventory">
+                                    <group>
+
+                                        <group>
+                                            <field name="armorBuy"/>
+                                            <field name="armorBuy_price"/>
+                                            <field name="armorBuy_image" widget="image"/>
+                                            <button name="buy_armor"
+                                              type="object"
+                                              string="Buy armor"
+                                              class="btn btn-primary"
+                                              attrs="{'invisible':[('armorBuy_price', '==', 0)]}"
+                                            ></button>
+                                        </group>
+                                            <group>
+                                                <field name="swordBuy"/>
+
+                                                <field name="swordBuy_price"/>
+                                                <field name="swordBuy_image" widget="image"/>
+                                                <button name="buy_sword"
+                                                  type="object"
+                                                  string="Buy sword"
+                                                  class="btn btn-primary"
+                                                  attrs="{'invisible':[('swordBuy_price', '==', 0)]}"
+                                                ></button>
+                                            </group>
+
+                                    </group>
+                                </page>
+                        </notebook>
                             <group>
                                 <separator string="Location"></separator>
-                                <field name="city"/>
-                                <field name="dungeon"/>
+                                <field name="travel_name"></field>
+                                <field name="travel_type"></field>
+
                             </group>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
+        
     </data>
 </odoo>
