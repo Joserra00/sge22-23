@@ -34,6 +34,10 @@
         'demo/demo.xml',
         'demo/demo_sword.xml',
         'demo/demo_armor.xml',
+        'views/cron.xml',
+        'views/armor.xml',
+        'views/sword.xml',
+        'views/travel_dungeon_rel.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_list">
+            <field name="name">runescape </field>
+            <field name="model">runescape.travel_dungeon</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="player" />
+                    <field name="travel_to"/>
+                    <field name="dungeon"/>
+                    <field name="zone" />
+
+
+                </tree>
+            </field>
+            </record>
+
+            <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_form">
+            <field name="name">runescape </field>
+            <field name="model">runescape.travel_dungeon</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    
+                    </header>
+                    <sheet>
+                <group>
+                    <field name="player" />
+                    <field name="travel_to"/>
+                    <field name="price"/>
+                    <field name="dungeon" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+                    <field name="zone" attrs="{'invisible':[('travel_to', '=', '2')]}"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <button name="battle_mob" type="object" string="Battle" class="oe_highlight" attrs="{'invisible':[('travel_to', '!=', '2')]}" />
+                    <field name="mob" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+                
+
+                </group>
+                    </sheet>
+                </form>
+            </field>
+            </record>
+            <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_calendar">
+            <field name="name">Travel List</field>
+            <field name="model">runescape.travel_dungeon</field>
+            <field name="arch" type="xml">
+                <calendar string="Travel Calendar"
+                        date_start="date_start"
+                        date_stop="date_end"
+                >
+                <field name="travel_to"/>
+
+                
+                </calendar>
+            </field>
+            </record>
+    </data>
+</odoo>

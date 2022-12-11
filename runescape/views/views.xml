@@ -1,66 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-
-      <record model="ir.ui.view" id="runescape.sword_form">
-      <field name="name">runescape sword</field>
-      <field name="model">runescape.sword</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-                <field name="sword_image" widget="image"/>
-                <field name="name"/>
-                <field name="damage"/>
-                <field name="price"/>
-                <field name="material"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-      <record model="ir.ui.view" id="runescape.sword_list">
-      <field name="name">runescape swords</field>
-      <field name="model">runescape.sword</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="sword_image" widget="image"/>
-            <field name="name"/>
-          <field name="damage"/>
-          <field name="price"/>
-        </tree>
-      </field>
-    </record>
-      <record model="ir.ui.view" id="runescape.armor_form">
-      <field name="name">runescape armor</field>
-      <field name="model">runescape.armor</field>
-      <field name="arch" type="xml">
-        <form>
-          <sheet>
-            <group>
-              <field name="armor_image" widget="image"/>
-                <field name="name"/>
-                <field name="defense"/>
-                <field name="price"/>
-                <field name="material"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-      <record model="ir.ui.view" id="runescape.armor_list">
-      <field name="name">runescape armor</field>
-      <field name="model">runescape.armor</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="armor_image" widget="image"/>
-          <field name="defense"/>
-          <field name="price"/>
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
-
+     
 
 
        <record model="ir.ui.view" id="runescape.dungeon_mob_rel_list">
@@ -75,46 +16,7 @@
         </tree>
       </field>
     </record>
-      <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_list">
-      <field name="name">runescape </field>
-      <field name="model">runescape.travel_dungeon</field>
-      <field name="arch" type="xml">
-        <tree>
-            <field name="player" />
-            <field name="travel_to"/>
-            <field name="dungeon"/>
-            <field name="zone" />
-
-
-        </tree>
-      </field>
-    </record>
-
-      <record model="ir.ui.view" id="runescape.dungeon_travel_dungeon_rel_form">
-      <field name="name">runescape </field>
-      <field name="model">runescape.travel_dungeon</field>
-      <field name="arch" type="xml">
-          <form>
-             <header>
-              
-            </header>
-              <sheet>
-        <group>
-            <field name="player" />
-            <field name="travel_to"/>
-            <field name="dungeon" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
-            <field name="zone" attrs="{'invisible':[('travel_to', '=', '2')]}"/>
-            <field name="date_start"/>
-            <field name="date_end"/>
-            <button name="battle_mob" type="object" string="Battle" class="oe_highlight" attrs="{'invisible':[('travel_to', '!=', '2')]}" />
-            <field name="mob" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
-           
-
-        </group>
-              </sheet>
-          </form>
-      </field>
-    </record>
+      
     
 
 
@@ -182,7 +84,7 @@
     <!-- menu categories -->
 
     <menuitem name="Menu" id="runescape.menu_game" parent="runescape.menu_root"/>
-    <menuitem name="Battle" id="runescape.battle_game" parent="runescape.menu_root"/>
+    <menuitem name="Travel/Battle" id="runescape.battle_game" parent="runescape.menu_root"/>
 
     <!-- actions -->
 

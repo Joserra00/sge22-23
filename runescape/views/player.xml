@@ -50,7 +50,7 @@
             <field name="name"/>
             <field name="travel_name"/>
             <field name="travel_type"/>
-            <filter name="group_travel" string="Group By Travel" context="{'group_by': 'sword'}"/>
+            <filter name="group_travel" string="Group By Sword" context="{'group_by': 'sword'}"/>
         </search>
             </field>
         </record>
@@ -73,15 +73,18 @@
                             <notebook>
                                 <page name="inventory" string="Inventory">
                             <group>
+                                <group>
                                 <field name="armor_image" widget="image"/>
                                 <field name="armor"/>
                                 <field name="defense"/>
                                 <field name="armor_price"/>
+                                </group>
+                                <group>
                                 <field name="sword_image" widget="image"/>
                                 <field name="sword" mode="tree"/>
                                 <field name="damage"/>
                                 <field name="sword_price"/>
-
+                                </group>
                             </group>
                             </page>
                                 <page string="Buy inventory">
@@ -110,7 +113,8 @@
                                                   attrs="{'invisible':[('swordBuy_price', '==', 0)]}"
                                                 ></button>
                                             </group>
-
+                                        <separator string="Money after buy"></separator>
+                                        <field name="money_after_buy"/>
                                     </group>
                                 </page>
                         </notebook>

@@ -3,7 +3,9 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta
-
+from typing import Final
+from random import *
+WOLF_QTY: Final[int] = 15
 class player(models.Model):
     _name = 'runescape.player'
     _description = 'Player of the game'
@@ -33,6 +35,7 @@ class player(models.Model):
     defense = fields.Integer(related='armor.defense')
     armor_image=fields.Image(related='armor.armor_image')
     armor_price = fields.Integer(related='armor.price')
+    money_after_buy = fields.Integer(readonly=True,compute='_set_money_buy')
     strength = fields.Integer(default=5)
     travel = fields.One2many('runescape.travel_dungeon', 'player')
     travel_name = fields.Char(compute='_location_assign')
@@ -59,14 +62,12 @@ class player(models.Model):
                 player.travel_type = "Dungeon"    
 
 
+    @api.onchange('armorBuy','swordBuy')
+    def _set_money_buy(self):
+        for s in self:
+            if(s.coins>0):
+                s.money_after_buy=(s.coins-(s.armorBuy_price+s.swordBuy_price))
 
-    #@api.constrains('city')
-    #def _player_location(self):
-    #    for s in self:
-     #       if len(self.city)>0 and len(self.dungeon)>0:
-      #          raise ValidationError("No puedes estar en una zona segura y una Dungeon a la vez")
- 
-  
 
  
 
@@ -82,11 +83,12 @@ class player(models.Model):
             resultado=(s.coins-s.swordBuy_price)
             if resultado<0:
                 print("No hay suficientes coins")
-
+                s.swordBuy=False
             else:
                 s.coins=resultado
                 s.sword=s.swordBuy.id
                 s.swordBuy=False
+                s.money_after_buy=s.coins-s.armorBuy_price
 
 
     def buy_armor(self):
@@ -94,12 +96,13 @@ class player(models.Model):
             resultado = (s.coins-s.armorBuy_price)
             if resultado < 0:
                 print("No hay suficientes coins")
+                s.armorBuy=False
 
             else:
                 s.coins = resultado
                 s.armor = s.armorBuy.id
                 s.armorBuy = False
-
+                s.money_after_buy=s.coins-s.swordBuy_price
 
    
 
@@ -152,6 +155,13 @@ class dungeon_mob_rel(models.Model):
     mob=fields.Many2one('runescape.mob')
     qty=fields.Integer()
 
+    @api.model
+    def respawn_mobs(self):
+        mob_rel=self.env['runescape.dungeon_mob_rel'].search([])
+        for s in mob_rel:
+            s.qty=randrange(8, 20, 2) 
+            print(s.qty)
+
 
 class mob(models.Model):
     _name = 'runescape.mob'
@@ -171,13 +181,30 @@ class travel_dungeon(models.Model):
     _name = 'runescape.travel_dungeon'
     _description = 'Runescape travel'
 
-    player = fields.Many2one('runescape.player',ondelete='cascade')
-    travel_to=fields.Selection([('1','City'),('2','Dungeon')])
+    player = fields.Many2one('runescape.player',ondelete='cascade',required=True)
+    travel_to=fields.Selection([('1','City'),('2','Dungeon')],default='1')
     dungeon = fields.Many2one('runescape.dungeon')
     zone = fields.Many2one('runescape.zone')
     date_start = fields.Datetime(readonly=True, default = fields.Datetime.now)
     date_end = fields.Datetime(compute='_get_time')  # Calcul de dates
     mob = fields.One2many(related='dungeon.mob')
+    price = fields.Integer(compute='_get_price')
+    @api.onchange('dungeon','zone')
+    def _get_price(self):
+        for s in self:
+            if len(s.dungeon)>0:
+                s.price=s.dungeon.price
+            if len(s.zone)>0:
+                s.price=s.zone.price
+
+    @api.constrains('player')
+    def _enough_money(self):
+        for s in self:
+            if s.player.coins<s.price:
+                raise ValidationError("No tienes suficientes coins para realizar el viaje")
+            else:
+                s.player.coins-s.price
+
 
     def _get_time(self):
         for s in self:
@@ -185,4 +212,5 @@ class travel_dungeon(models.Model):
     def battle_mob(self):
         for s in self:
             print(s.dungeon.mob.qty)
+            s.dungeon.mob.qty-=1
 
