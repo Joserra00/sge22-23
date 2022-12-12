@@ -8,6 +8,7 @@
                     <field name="id"/>
                     <field name="name"/>
                     <field name="price"/>
+                    <field name="avatar" widget="image"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card o_kanban_record_has_image_fill" >
@@ -54,7 +55,7 @@
                     <field name="price"/>
                     <field name="avatar" widget="image"/>
                 </group>
-                <group string="MOB">
+                <group string="MOBS">
                 <tree>
                     <field name="mob"/>
                 </tree>

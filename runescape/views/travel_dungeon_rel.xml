@@ -34,7 +34,7 @@
                     <field name="date_end"/>
                     <button name="battle_mob" type="object" string="Battle" class="oe_highlight" attrs="{'invisible':[('travel_to', '!=', '2')]}" />
                     <field name="mob" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
-                
+
 
                 </group>
                     </sheet>

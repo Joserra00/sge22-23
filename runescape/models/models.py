@@ -189,6 +189,13 @@ class travel_dungeon(models.Model):
     date_end = fields.Datetime(compute='_get_time')  # Calcul de dates
     mob = fields.One2many(related='dungeon.mob')
     price = fields.Integer(compute='_get_price')
+
+    @api.model
+    def create(self, values):
+        new_id = super(travel_dungeon, self).create(values)
+        new_id.player.coins -= new_id.price
+        return new_id
+
     @api.onchange('dungeon','zone')
     def _get_price(self):
         for s in self:
