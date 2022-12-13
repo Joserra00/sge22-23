@@ -186,7 +186,7 @@ class travel_dungeon(models.Model):
     dungeon = fields.Many2one('runescape.dungeon')
     zone = fields.Many2one('runescape.zone')
     date_start = fields.Datetime(readonly=True, default = fields.Datetime.now)
-    date_end = fields.Datetime(compute='_get_time')  # Calcul de dates
+    date_end = fields.Datetime(compute='_get_time',store=True)
     mob = fields.One2many(related='dungeon.mob')
     price = fields.Integer(compute='_get_price')
 
@@ -216,6 +216,7 @@ class travel_dungeon(models.Model):
     def _get_time(self):
         for s in self:
             s.date_end = fields.Datetime.to_string(fields.Datetime.from_string(s.date_start) + timedelta(minutes=1))
+
     def battle_mob(self):
         for s in self:
             print(s.dungeon.mob.qty)

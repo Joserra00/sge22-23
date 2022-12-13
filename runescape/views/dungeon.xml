@@ -55,7 +55,7 @@
                     <field name="price"/>
                     <field name="avatar" widget="image"/>
                 </group>
-                <group string="MOBS">
+                <group string="MOBS (Primero crear dungeon y luego agregar mob)">
                 <tree>
                     <field name="mob"/>
                 </tree>
