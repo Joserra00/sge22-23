@@ -28,6 +28,7 @@
                 <field name="hp"/>
                 <field name="defense"/>
                 <field name="strength"/>
+                <field name="gold_gain_bykill"/>
             </group>
           </sheet>
         </form>

@@ -1,0 +1,122 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition 
+
+    <record model="ir.ui.view" id="simarropop_tree">
+      <field name="name">simarropop tree</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="simarropop.usuarios_window">
+      <field name="name">simarropop usuarios</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form,kanban</field>
+      <field name="domain"></field>
+  
+      <field name="search_view_id" ref="simarropop_usuarios_search"></field>
+      
+      <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('simarropop_usuarios_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('simarropop.usuarios_form')}),]" />
+            
+    </record>
+
+    <record model="ir.actions.act_window" id="simarropop.articulos_window">
+      <field name="name">simarropop articulos</field>
+      <field name="res_model">simarropop.articulo</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="simarropop_articulos_search"></field>
+    </record>
+
+  <record model="ir.actions.act_window" id="simarropop.mensajes_window">
+      <field name="name">simarropop mensajes</field>
+      <field name="res_model">simarropop.mensaje</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="simarropop.categorias_window">
+      <field name="name">simarropop categorias</field>
+      <field name="res_model">simarropop.categoria</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="simarropop.fotos_window">
+      <field name="name">simarropop fotos</field>
+      <field name="res_model">simarropop.foto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="simarropop.valoraciones_window">
+      <field name="name">simarropop valoraciones</field>
+      <field name="res_model">simarropop.valoracion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="simarropop.ventas_window">
+      <field name="name">simarropop ventas</field>
+      <field name="res_model">sale.order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="simarropop.action_server">
+      <field name="name">simarropop server</field>
+      <field name="model_id" ref="model_simarropop_simarropop"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="simarropop" id="simarropop.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Simarropop Menu" id="simarropop.menu_1" parent="simarropop.menu_root"/>
+     <!--<menuitem name="Menu 1" id="simarropop.menu_1" parent="simarropop.menu_root"/>
+    -->
+    <!-- actions -->
+
+    <menuitem name="Usuarios" id="simarropop.menu_usuarios_list" parent="simarropop.menu_1"
+              action="simarropop.usuarios_window"/>
+        
+    <menuitem name="Articulos" id="simarropop.menu_articulos_list" parent="simarropop.menu_1"
+              action="simarropop.articulos_window"/>
+
+    <menuitem name="Mensajes" id="simarropop.menu_mensajes_list" parent="simarropop.menu_1"
+              action="simarropop.mensajes_window"/>
+
+    <menuitem name="Categorias" id="simarropop.menu_categorias_list" parent="simarropop.menu_1"
+              action="simarropop.categorias_window"/>
+
+    <menuitem name="Fotos" id="simarropop.menu_fotos_list" parent="simarropop.menu_1"
+              action="simarropop.fotos_window"/>
+
+    <menuitem name="Valoraciones" id="simarropop.menu_valoraciones_list" parent="simarropop.menu_1"
+              action="simarropop.valoraciones_window"/>
+
+    <menuitem name="Ventas" id="simarropop.menu_ventas_list" parent="simarropop.menu_1"
+              action="simarropop.ventas_window"/>
+<!--
+    <menuitem name="Server to list" id="simarropop" parent="simarropop.menu_2"
+              action="simarropop.action_server"/>
+-->
+  </data>
+</odoo>

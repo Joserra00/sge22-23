@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!-- Vista tree categoria-->
+    <record model="ir.ui.view" id="simarropop_categorias_tree">
+      <field name="name">simarropop categorias tree</field>
+      <field name="model">simarropop.categoria</field>
+      <field name="arch" type="xml">
+        <tree>
+           <field name="name"/>
+          <field name="categoria_img"  widget="image" />
+        </tree>
+      </field>
+    </record>
+
+<!-- Vista form categoria-->
+    <record model="ir.ui.view" id="simarropop_categorias_form">
+      <field name="name">simarropop categorias form</field>
+      <field name="model">simarropop.categoria</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="name"/>
+           <field name="categoria_img" widget="image"/>
+          <field name="descripcion_categoria"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>

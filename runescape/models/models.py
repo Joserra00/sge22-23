@@ -7,14 +7,16 @@ from typing import Final
 from random import *
 WOLF_QTY: Final[int] = 15
 class player(models.Model):
-    _name = 'runescape.player'
+    _name = 'res.partner'
+    _inherit = 'res.partner'
     _description = 'Player of the game'
 
-    name = fields.Char(required=True)
+    #name = fields.Char(required=True)
     password = fields.Char()
     avatar = fields.Image(max_width = 100, max_height=100)
     coins = fields.Integer(default=7000)
     hp = fields.Integer(default=20)
+    is_player = fields.Boolean(default=False)
 
     def _first_sword(self):
         return self.env['runescape.sword'].search([])[6]
@@ -37,7 +39,7 @@ class player(models.Model):
     armor_price = fields.Integer(related='armor.price')
     money_after_buy = fields.Integer(readonly=True,compute='_set_money_buy')
     strength = fields.Integer(default=5)
-    travel = fields.One2many('runescape.travel_dungeon', 'player')
+    travel = fields.One2many('runescape.travel_dungeon', 'player',ondelete='cascade')
     travel_name = fields.Char(compute='_location_assign')
     travel_type = fields.Char(compute='_location_assign')
 
@@ -65,7 +67,6 @@ class player(models.Model):
     @api.onchange('armorBuy','swordBuy')
     def _set_money_buy(self):
         for s in self:
-            if(s.coins>0):
                 s.money_after_buy=(s.coins-(s.armorBuy_price+s.swordBuy_price))
 
 
@@ -103,6 +104,16 @@ class player(models.Model):
                 s.armor = s.armorBuy.id
                 s.armorBuy = False
                 s.money_after_buy=s.coins-s.swordBuy_price
+    def generate_travel(self):
+        
+        return {
+        'type': 'ir.actions.act_window',
+        'res_model': 'runescape.travel_wizard',
+        'context': {'player_id': self.id},
+        'view_mode': 'form',
+        'view_type': 'form',    
+        'target': 'new', 
+    }
 
    
 
@@ -174,6 +185,7 @@ class mob(models.Model):
     defense = fields.Integer()
     hp = fields.Integer()
     dungeon = fields.Many2many('runescape.dungeon')
+    gold_gain_bykill = fields.Integer();
     
 
 
@@ -181,7 +193,7 @@ class travel_dungeon(models.Model):
     _name = 'runescape.travel_dungeon'
     _description = 'Runescape travel'
 
-    player = fields.Many2one('runescape.player',ondelete='cascade',required=True)
+    player = fields.Many2one('res.partner',domain="[('is_player','=',True)]",ondelete='cascade')
     travel_to=fields.Selection([('1','City'),('2','Dungeon')],default='1')
     dungeon = fields.Many2one('runescape.dungeon')
     zone = fields.Many2one('runescape.zone')
@@ -219,6 +231,132 @@ class travel_dungeon(models.Model):
 
     def battle_mob(self):
         for s in self:
-            print(s.dungeon.mob.qty)
-            s.dungeon.mob.qty-=1
+            mob_health= s.mob.mob.hp
+            player_health= s.player.hp
+            if(s.dungeon.mob.qty==0):
+                raise ValidationError("No quedan mobs en la dungeon")
+            
+            while mob_health>0 and player_health>0:
+                damage_dealt_mob=(randrange(0,int(s.dungeon.mob.mob.damage*s.dungeon.mob.mob.strength/s.player.defense),1))
+                player_health -=damage_dealt_mob
+                damage_dealt_mob_str = "Damage by mob: "+str(damage_dealt_mob)+", Player remaining hp : "+str(player_health)
+
+                damage_dealt_player = ( randrange(0, int(s.player.strength*s.player.damage/s.dungeon.mob.mob.defense), 1))
+                mob_health -=damage_dealt_player
+                damage_dealt_player_str ="Damage by player: "+str(damage_dealt_player)+", Mob remaining hp : "+str(mob_health)
+
+                print(damage_dealt_mob_str)
+                print(damage_dealt_player_str)
+
+            if player_health>0:
+                s.player.coins+=s.dungeon.mob.mob.gold_gain_bykill
+                s.dungeon.mob.qty-=1;
+                print(str(s.player.name)+" coins: "+str(s.player.coins))
+           
+#WIZARD PLAYER
+class player_wizard(models.TransientModel):
+    _name = 'runescape.player_wizard'
+    _description = 'Wizard per crear players'
+
+
+    name = fields.Char()
+    password = fields.Char()
+    avatar = fields.Image(max_width=200, max_height=200)
+    is_player=fields.Boolean(default=False)
+
+    def create_player(self):
+        self.ensure_one()
+        self.env['res.partner'].create({
+                            'name':self.name,
+                            'password': self.password,
+                            'avatar': self.avatar,
+                            'is_player': True
+                         })
+
+
+class travel_wizard(models.TransientModel):
+    _name = 'runescape.travel_wizard'
+    _description = 'Wizard per crear travel'
+    def _get_player(self):
+      return self.env['res.partner'].search([('id',"=",self.env.context.get('player_id'))])
+    
+    player = fields.Many2one('res.partner',readonly=True,domain="[('is_player','=',True)]",ondelete='cascade',default=_get_player)
+    travel_to=fields.Selection([('1','City'),('2','Dungeon')],default='1')
+    dungeon = fields.Many2one('runescape.dungeon')
+    zone = fields.Many2one('runescape.zone')
+    date_start = fields.Datetime(readonly=True, default = fields.Datetime.now)
+    date_end = fields.Datetime(compute='_get_time',store=True)
+    mob = fields.One2many(related='dungeon.mob')
+    price = fields.Integer(compute='_get_price')
+
+   
+
+
+    @api.onchange('dungeon','zone')
+    def _get_price(self):
+        for s in self:
+            if len(s.dungeon)>0:
+                s.price=s.dungeon.price
+            if len(s.zone)>0:
+                s.price=s.zone.price
+
+    @api.constrains('player')
+    def _enough_money(self):
+        for s in self:
+            if s.player.coins<s.price:
+                raise ValidationError("No tienes suficientes coins para realizar el viaje")
+            else:
+                s.player.coins-s.price
+
+
+    def _get_time(self):
+        for s in self:
+            s.date_end = fields.Datetime.to_string(fields.Datetime.from_string(s.date_start) + timedelta(minutes=1))
+
+    def battle_mob(self):
+        for s in self:
+            mob_health= s.mob.mob.hp
+            player_health= s.player.hp
+            if(s.dungeon.mob.qty==0):
+                raise ValidationError("No quedan mobs en la dungeon")
+            
+            while mob_health>0 and player_health>0:
+                damage_dealt_mob=(randrange(0,int(s.dungeon.mob.mob.damage*s.dungeon.mob.mob.strength/5),1))
+                player_health -=damage_dealt_mob
+                damage_dealt_mob_str = "Damage by mob: "+str(damage_dealt_mob)+", Player remaining hp : "+str(player_health)
+
+                damage_dealt_player = ( randrange(0, int(s.player.strength*s.player.damage/10), 1))
+                mob_health -=damage_dealt_player
+                damage_dealt_player_str ="Damage by player: "+str(damage_dealt_player)+", Mob remaining hp : "+str(mob_health)
+
+                print(damage_dealt_mob_str)
+                print(damage_dealt_player_str)
+
+            if player_health>0:
+                s.player.coins+=s.dungeon.mob.mob.gold_gain_bykill
+                s.dungeon.mob.qty-=1
+                print(str(s.player.name)+" coins: "+str(s.player.coins))
+   
+
+    def launch_travel(self):
+        self.ensure_one()
+        self.env['runescape.travel_dungeon'].create({
+                            'player':self.player.id,
+                            'travel_to': self.travel_to,
+                            'dungeon': self.dungeon.id,
+                            'zone': self.zone.id,
+                            'date_start' : self.date_start,
+                            'date_end' : self.date_end,
+                            'mob' : self.mob,
+                            'price' : self.price
+                         })
+
+class battle(models.Model):
+    _name = 'runescape.battle'
+    _description = 'Runescape battle'
+
+    player1 =  fields.Many2one('res.partner')
+    player2 =  fields.Many2one('res.partner')
+    date_start = fields.Datetime(readonly=True, default=fields.Datetime.now)
+    state = fields.Selection([('1', 'Preparation'), ('2', 'Launched'), ('3', 'Finished')], default='1')
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "runescape",
+    'name': "simarropop",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -20,25 +20,20 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail'],
+    'depends': ['base', 'sale'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/modelos/usuarios.xml',
+        'views/modelos/articulos.xml',
+        'views/modelos/mensajes.xml',
+        'views/modelos/categorias.xml',
+        'views/modelos/fotos.xml',
+        'views/modelos/valoraciones.xml',
+        'views/modelos/ventas.xml',
         'views/views.xml',
-        'views/player.xml',
         'views/templates.xml',
-        'views/mob.xml',
-        'views/dungeon.xml',
-        'views/zone.xml',
-        'views/battle.xml',
-        'demo/demo.xml',
-        'demo/demo_sword.xml',
-        'demo/demo_armor.xml',
-        'views/cron.xml',
-        'views/armor.xml',
-        'views/sword.xml',
-        'views/travel_dungeon_rel.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

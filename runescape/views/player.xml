@@ -1,8 +1,90 @@
 <odoo>
     <data>
+      <record model="ir.ui.view" id="runescape.player_wizard_form">
+            <field name="name">runescape player wizard</field>
+            <field name="model">runescape.player_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+
+                        <group>
+                            <field name="avatar" widget="image"/>
+                            <field name="name"/>
+                            <field name="password" password="True"/>
+                            <field name="is_player"/>
+                        </group>
+
+                     <footer>
+                        <button name="create_player" type="object"
+                                string="Create" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="runescape.travel_wizard">
+            <field name="name">runescape wizard</field>
+            <field name="model">runescape.travel_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    
+                    </header>
+                    <sheet>
+                <group>
+                    <field name="player" />
+                    <field name="travel_to"/>
+                    <field name="price"/>
+                    <field name="dungeon" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+                    <field name="zone" attrs="{'invisible':[('travel_to', '=', '2')]}"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <button name="battle_mob" type="object" string="Battle" class="oe_highlight" attrs="{'invisible':[('travel_to', '!=', '2')]}" />
+                    <field name="mob" attrs="{'invisible':[('travel_to', '=', '1')]}"/>
+
+
+                </group>
+                  <footer>
+                        <button name="launch_travel" type="object"
+                                string="Create" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                    </sheet>
+                </form>
+            </field>
+            </record>
+        <record id="runescape.travel_wizard_action" model="ir.actions.act_window">
+      <field name="name">Create travel</field>
+      <field name="res_model">runescape.travel_wizard</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+      <field name="binding_model_id" ref="base.model_res_partner"/>
+    </record>
+
+        <record id="runescape.player_wizard_action" model="ir.actions.act_window">
+            <field name="name">Create Player</field>
+            <field name="res_model">runescape.player_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+        </record>
+        <record model="ir.ui.view" id="runescape.player_list">
+        <field name="name">runescape player</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="avatar" widget="image"/>
+                    <field name="name"/>
+                    <field name="hp"/>
+                    <field name="coins"/>
+                    <field name="strength"/>
+                
+            </tree>
+        </field>
+        </record>
         <record model="ir.ui.view" id="runescape.player_kanban_view">
             <field name="name">Runescape player</field>
-            <field name="model">runescape.player</field>
+            <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="id"/>
@@ -44,12 +126,13 @@
 
         <record model="ir.ui.view" id="runescape.player_search">
             <field name="name">runescape search</field>
-            <field name="model">runescape.player</field>
+            <field name="model">res.partner</field>
             <field name="arch" type="xml">
             <search>
             <field name="name"/>
             <field name="travel_name"/>
             <field name="travel_type"/>
+            <filter name="player_partner" string="Is Player" domain="[('is_player','=',True)]" />
             <filter name="group_travel" string="Group By Sword" context="{'group_by': 'sword'}"/>
         </search>
             </field>
@@ -57,7 +140,7 @@
 
         <record model="ir.ui.view" id="runescape.player_form">
             <field name="name">runescape list</field>
-            <field name="model">runescape.player</field>
+            <field name="model">res.partner</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
@@ -69,6 +152,7 @@
                                 <field name="hp"/>
                                 <field name="coins"/>
                                 <field name="strength"/>
+                                <field name="is_player"/>
                             </group>
                             <notebook>
                                 <page name="inventory" string="Inventory">
@@ -122,7 +206,7 @@
                                 <separator string="Location"></separator>
                                 <field name="travel_name"></field>
                                 <field name="travel_type"></field>
-
+                                <button name="generate_travel" type="object" string="New Travel" class="oe_highlight" />
                             </group>
                         </group>
                     </sheet>

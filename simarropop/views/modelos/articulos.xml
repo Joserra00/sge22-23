@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+<!-- Vista Tree articulos-->
+    <record model="ir.ui.view" id="simarropop_articulos_tree">
+      <field name="name">simarropop articulos tree</field>
+      <field name="model">simarropop.articulo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+         <field name="fotos_img" widget="image"/>
+        </tree>
+      </field>
+    </record>
+
+<!-- Vista Form articulos  -->
+   <record model="ir.ui.view" id="simarropop_articulos_form">
+      <field name="name">simarropop articulos form</field>
+      <field name="model">simarropop.articulo</field>
+      <field name="arch" type="xml">
+        <form string="Articulos">
+        <group>
+            <field name="usuario" domain="[('is_user','=',True)]"/>
+            <field name="usuario_comprador" domain="[('is_user','=',True)]"/>
+            <field name="categoria"/>
+            <field name="name"/>
+            <field name="descripcion"/>
+
+            <field name="fotos"/>
+            <field name="precio"/>
+            <field name="ubicacion"/>
+            </group>
+        </form>
+      </field>
+    </record>
+   
+  
+<!-- SEARCH articulos   -->
+    <record model="ir.ui.view" id="simarropop_articulos_search">
+      <field name="name">simarropop articulos search</field>
+      <field name="model">simarropop.articulo</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name = "categoria" />
+          <field name = "precio"/>  
+          <field name = "ubicacion"/>  
+     
+        </search>
+      </field>
+    </record>
+  
+  </data>
+</odoo>

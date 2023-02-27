@@ -26,8 +26,14 @@
 
     <record model="ir.actions.act_window" id="runescape.action_player_window">
       <field name="name">runescape</field>
-      <field name="res_model">runescape.player</field>
+      <field name="res_model">res.partner</field>
       <field name="view_mode">kanban,tree,form</field>
+      <field name="domain"></field>
+      <field name="search_view_id" ref="runescape.player_search"></field>
+      <field name="context">{'search_default_player_partner': 1, 'default_is_player': True, }</field>
+      <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('runescape.player_list')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('runescape.player_form')}),]" />
     </record>
         <record model="ir.actions.act_window" id="runescape.action_armor_window">
       <field name="name">Armor</field>
@@ -58,6 +64,11 @@
       <field name="name">Travel</field>
       <field name="res_model">runescape.travel_dungeon</field>
       <field name="view_mode">tree,form,calendar</field>
+    </record>
+        <record model="ir.actions.act_window" id="runescape.action_battle_window">
+      <field name="name">Battle</field>
+      <field name="res_model">runescape.battle</field>
+      <field name="view_mode">tree,form</field>
     </record>
 
 
@@ -102,6 +113,8 @@
               action="runescape.action_mob_window"/>
     <menuitem name="Travel" id="runescape.menu_travel_dungeon_list" parent="runescape.battle_game"
               action="runescape.action_travel_dungeon_window"/>
+    <menuitem name="Battle" id="runescape.menu_battle_list" parent="runescape.battle_game"
+              action="runescape.action_battle_window"/>
 
 
 

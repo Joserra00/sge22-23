@@ -1,6 +1,6 @@
 <odoo>
     <data>
-<record model="ir.ui.view" id="runescape.dungeon_kanban_view">
+<record model="ir.ui.view" id="runescape.zone_kanban_view">
             <field name="name">Runescape zone</field>
             <field name="model">runescape.zone</field>
             <field name="arch" type="xml">

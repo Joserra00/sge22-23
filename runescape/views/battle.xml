@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+     <record model="ir.ui.view" id="runescape.battle_form">
+      <field name="name">runescape battle</field>
+      <field name="model">runescape.battle</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="player1"/>
+                <field name="player2"/>
+                <field name="state"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+      <record model="ir.ui.view" id="runescape.battle_list">
+      <field name="name">runescape battle</field>
+      <field name="model">runescape.battle</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="player1"/>
+            <field name="player2"/>
+            <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    </data>
+</odoo>
