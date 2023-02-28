@@ -20,8 +20,9 @@ class player(models.Model):
 
     def _first_sword(self):
         return self.env['runescape.sword'].search([])[6]
+
     sword = fields.Many2one('runescape.sword',readonly=True)
-    swordBuy = fields.Many2one('runescape.sword',default=_first_sword)
+    swordBuy = fields.Many2one('runescape.sword',default=_first_sword,domain="[('id','!=',sword)]")
     swordBuy_image = fields.Image(related='swordBuy.sword_image')
     swordBuy_price = fields.Integer(related='swordBuy.price')
     damage = fields.Integer(related='sword.damage')
@@ -30,8 +31,9 @@ class player(models.Model):
 
     def _first_armor(self):
         return self.env['runescape.armor'].search([])[6]
+
     armor = fields.Many2one('runescape.armor',readonly=True)
-    armorBuy = fields.Many2one('runescape.armor',default=_first_armor)
+    armorBuy = fields.Many2one('runescape.armor',default=_first_armor,domain="[('id','!=',armor)]")
     armorBuy_image = fields.Image(related='armorBuy.armor_image')
     armorBuy_price = fields.Integer(related='armorBuy.price')
     defense = fields.Integer(related='armor.defense')
@@ -42,6 +44,19 @@ class player(models.Model):
     travel = fields.One2many('runescape.travel_dungeon', 'player',ondelete='cascade')
     travel_name = fields.Char(compute='_location_assign')
     travel_type = fields.Char(compute='_location_assign')
+
+    def aumentar_strength(self):
+        for s in self:
+            lvl = (s.strength + 1)
+
+            s.write({'strength': lvl})
+
+    def disminuir_strength(self):
+        for s in self:
+            lvl = (s.strength - 1)
+
+            s.write({'strength': lvl})
+
 
     @api.model
     def create(self, values):
@@ -69,7 +84,6 @@ class player(models.Model):
         for s in self:
                 s.money_after_buy=(s.coins-(s.armorBuy_price+s.swordBuy_price))
 
-
  
 
 
@@ -86,10 +100,13 @@ class player(models.Model):
                 print("No hay suficientes coins")
                 s.swordBuy=False
             else:
-                s.coins=resultado
-                s.sword=s.swordBuy.id
-                s.swordBuy=False
-                s.money_after_buy=s.coins-s.armorBuy_price
+                s.write({'coins':resultado,
+                            'sword':s.swordBuy,
+                            'swordBuy':False,
+                            'money_after_buy':s.coins-s.swordBuy_price})
+
+            
+                
 
 
     def buy_armor(self):
@@ -100,15 +117,25 @@ class player(models.Model):
                 s.armorBuy=False
 
             else:
-                s.coins = resultado
-                s.armor = s.armorBuy.id
-                s.armorBuy = False
-                s.money_after_buy=s.coins-s.swordBuy_price
+                 s.write({'coins':resultado,
+                            'armor':s.armorBuy,
+                            'armorBuy':False,
+                            'money_after_buy':s.coins-s.armorBuy_price})
+
     def generate_travel(self):
         
         return {
         'type': 'ir.actions.act_window',
         'res_model': 'runescape.travel_wizard',
+        'context': {'player_id': self.id},
+        'view_mode': 'form',
+        'view_type': 'form',    
+        'target': 'new', 
+    }
+    def generate_battle(self):
+            return {
+        'type': 'ir.actions.act_window',
+        'res_model': 'runescape.battle_wizard',
         'context': {'player_id': self.id},
         'view_mode': 'form',
         'view_type': 'form',    
@@ -184,8 +211,7 @@ class mob(models.Model):
     strength = fields.Integer()
     defense = fields.Integer()
     hp = fields.Integer()
-    dungeon = fields.Many2many('runescape.dungeon')
-    gold_gain_bykill = fields.Integer();
+    gold_gain_bykill = fields.Integer()
     
 
 
@@ -197,8 +223,8 @@ class travel_dungeon(models.Model):
     travel_to=fields.Selection([('1','City'),('2','Dungeon')],default='1')
     dungeon = fields.Many2one('runescape.dungeon')
     zone = fields.Many2one('runescape.zone')
-    date_start = fields.Datetime(readonly=True, default = fields.Datetime.now)
-    date_end = fields.Datetime(compute='_get_time',store=True)
+    date_start = fields.Datetime(readonly=True, default = fields.Datetime.now())
+    date_end = fields.Datetime()
     mob = fields.One2many(related='dungeon.mob')
     price = fields.Integer(compute='_get_price')
 
@@ -222,12 +248,7 @@ class travel_dungeon(models.Model):
             if s.player.coins<s.price:
                 raise ValidationError("No tienes suficientes coins para realizar el viaje")
             else:
-                s.player.coins-s.price
-
-
-    def _get_time(self):
-        for s in self:
-            s.date_end = fields.Datetime.to_string(fields.Datetime.from_string(s.date_start) + timedelta(minutes=1))
+                s.player.coins-s.price   
 
     def battle_mob(self):
         for s in self:
@@ -250,7 +271,7 @@ class travel_dungeon(models.Model):
 
             if player_health>0:
                 s.player.coins+=s.dungeon.mob.mob.gold_gain_bykill
-                s.dungeon.mob.qty-=1;
+                s.dungeon.mob.qty-=1
                 print(str(s.player.name)+" coins: "+str(s.player.coins))
            
 #WIZARD PLAYER
@@ -285,7 +306,7 @@ class travel_wizard(models.TransientModel):
     dungeon = fields.Many2one('runescape.dungeon')
     zone = fields.Many2one('runescape.zone')
     date_start = fields.Datetime(readonly=True, default = fields.Datetime.now)
-    date_end = fields.Datetime(compute='_get_time',store=True)
+    date_end = fields.Datetime(readonly=True,compute='_get_time',store=True)
     mob = fields.One2many(related='dungeon.mob')
     price = fields.Integer(compute='_get_price')
 
@@ -355,8 +376,213 @@ class battle(models.Model):
     _name = 'runescape.battle'
     _description = 'Runescape battle'
 
-    player1 =  fields.Many2one('res.partner')
-    player2 =  fields.Many2one('res.partner')
+
+    player1 =  fields.Many2one('res.partner',domain="[('is_player','=',True), ('id', '!=', player2)]")
+    player1_bet = fields.Integer(default=0)
+    player2 =  fields.Many2one('res.partner',domain="[('is_player','=',True), ('id', '!=', player1)]")
+    player2_bet = fields.Integer(default=0)
     date_start = fields.Datetime(readonly=True, default=fields.Datetime.now)
-    state = fields.Selection([('1', 'Preparation'), ('2', 'Launched'), ('3', 'Finished')], default='1')
+    state = fields.Selection([('1', 'Player 1'), ('2', 'Player 2'), ('3', 'Launch')], default='1')
+    date_end = fields.Datetime()
+    battle_ended=fields.Boolean(default=False)
+    
+    @api.model
+    def update_battle(self):
+         for s in self.search([('battle_ended',"=",False)]):
+            if (s.date_end < fields.Datetime.now()) and not s.battle_ended:
+                player1_health = s.player1.hp
+                player2_health = s.player2.hp
+                while player1_health>0 and player2_health>0:
+                    damage_dealt_player1=(randrange(0,int(s.player1.damage*s.player1.strength/(s.player1.defense+1)),1))
+                    player2_health -=damage_dealt_player1
+                    damage_dealt_player1_str = "Damage by "+s.player1.name+": "+str(damage_dealt_player1)+", "+s.player2.name+" remaining hp : "+str(player2_health)
+
+                    damage_dealt_player2 = ( randrange(0, int(s.player2.strength*s.player2.damage/(s.player2.defense+1)), 1))
+                    player1_health -=damage_dealt_player2
+                    damage_dealt_player2_str ="Damage by "+s.player2.name+": "+str(damage_dealt_player2)+", "+s.player1.name+" remaining hp : "+str(player1_health)
+
+                    print(damage_dealt_player1_str)
+                    print(damage_dealt_player2_str)
+                if player1_health>0:
+                    s.player1.coins+=s.player2_bet
+                    print( s.player1.name+" wins, coins gain: "+str(s.player2_bet))
+                else:
+                    s.player2.coins+=s.player1_bet
+                    print(s.player2.name+" wins, coins gain: "+str(s.player1_bet))
+
+                s.battle_ended=True
+            else: print("No battles to launch")
+
+    @api.onchange('player1')
+    def _funcion(self):
+        for s in self:
+            player1_qty = self.env['res.partner'].search([('is_player',"=",True)])
+            player1_qty = player1_qty.filtered(lambda r: r.id != s.player1.id)
+            print(player1_qty)
+            #return {'domain':{'player2'[('id','in',player1_qty.ids)]}}
+
+
+    @api.onchange('player1_bet')
+    def _get_player1_stats(self):
+        for s in self:
+            
+            if s.player1.coins<s.player1_bet:
+                raise ValidationError("No puedes apostar mas dinero del que tienes")
+
+    @api.onchange('player2_bet')
+    def _get_player2_stats(self):
+        for s in self:
+            if s.player2.coins<s.player2_bet:
+                raise ValidationError("No puedes apostar mas dinero del que tienes")
+
+    def launch_battle(self):
+        for s in self:
+            player1_health = s.player1.hp
+            player2_health = s.player2.hp
+            while player1_health>0 and player2_health>0:
+                damage_dealt_player1=(randrange(0,int(s.player1.damage*s.player1.strength/s.player1.defense),1))
+                player2_health -=damage_dealt_player1
+                damage_dealt_player1_str = "Damage by Player 1: "+str(damage_dealt_player1)+", Player 2 remaining hp : "+str(player2_health)
+
+                damage_dealt_player2 = ( randrange(0, int(s.player2.strength*s.player2.damage/s.player2.defense), 1))
+                player1_health -=damage_dealt_player2
+                damage_dealt_player2_str ="Damage by Player 2: "+str(damage_dealt_player2)+", Player 1 remaining hp : "+str(player1_health)
+
+                print(damage_dealt_player1_str)
+                print(damage_dealt_player2_str)
+            if player1_health>0:
+                s.player1.coins+=s.player2_bet
+                print("Player 1 wins, coins gain: "+str(s.player2_bet))
+            else:
+                s.player2.coins+=s.player1_bet
+                print("Player 2 wins, coins gain: "+str(s.player1_bet))
+            
+
+    def back(self):
+        for b in self:
+            if b.state == '2':
+                b.state = '1'
+            if b.state == '3':
+                b.state = '2'
+
+    def next(self):
+        for b in self:
+            if b.state == '2':
+                b.state = '3'
+            if b.state == '1':
+                b.state = '2'
+
+class battle_wizard(models.TransientModel):
+    _name = 'runescape.battle_wizard'
+    _description = 'Runescape battle wizard'
+    def _get_player(self):
+        return self.env['res.partner'].search([('id',"=",self.env.context.get('player_id'))])
+
+    player1 =  fields.Many2one('res.partner',domain="[('is_player','=',True), ('id', '!=', player2)]",default=_get_player,readonly=True)
+    player1_bet = fields.Integer(default=0)
+    player2 =  fields.Many2one('res.partner',domain="[('is_player','=',True), ('id', '!=', player1)]")
+    player2_bet = fields.Integer(default=0)
+    date_start = fields.Datetime(readonly=True, default=fields.Datetime.now())
+    date_end = fields.Datetime(default=fields.Datetime.now())
+    state = fields.Selection([('1', 'Player 1'), ('2', 'Player 2'), ('3', 'Launch')], default='1')
+    
+    def create_battle(self):
+        self.ensure_one()
+        self.env['runescape.battle'].create({
+                            'player1':self.player1.id,
+                            'player1_bet': self.player1_bet,
+                            'player2': self.player2.id,
+                            'player2_bet': self.player2_bet,
+                            'date_start': self.date_start,
+                            'date_end': self.date_end,
+                            'state': self.state
+                         })
+
+    @api.onchange('player1')
+    def _funcion(self):
+        for s in self:
+            player1_qty = self.env['res.partner'].search([('is_player',"=",True)])
+            player1_qty = player1_qty.filtered(lambda r: r.id != s.player1.id)
+            print(player1_qty)
+            #return {'domain':{'player2'[('id','in',player1_qty.ids)]}}
+
+
+    @api.onchange('player1_bet')
+    def _get_player1_stats(self):
+        for s in self:
+            if s.player1.coins<s.player1_bet:
+                s.player1_bet=s.player1.coins
+                return {
+                    'warning': {'title': "Warning", 'message': "No tienes suficientes coins!! Se ha puesto tu maximo de apuesta", 'type': 'notification'},
+            }           
+                
+
+    @api.onchange('player2_bet')
+    def _get_player2_stats(self):
+        for s in self:
+            if s.player2.coins<s.player2_bet:
+                s.player2_bet=s.player2.coins
+                return {
+                    'warning': {'title': "Warning", 'message': "No tienes suficientes coins!! Se ha puesto tu maximo de apuesta", 'type': 'notification'},
+                }
+
+    def launch_battle(self):
+        for s in self:
+            player1_health = s.player1.hp
+            player2_health = s.player2.hp
+            while player1_health>0 and player2_health>0:
+                damage_dealt_player1=(randrange(0,int(s.player1.damage*s.player1.strength/s.player1.defense),1))
+                player2_health -=damage_dealt_player1
+                damage_dealt_player1_str = "Damage by Player 1: "+str(damage_dealt_player1)+", Player 2 remaining hp : "+str(player2_health)
+
+                damage_dealt_player2 = ( randrange(0, int(s.player2.strength*s.player2.damage/s.player2.defense), 1))
+                player1_health -=damage_dealt_player2
+                damage_dealt_player2_str ="Damage by Player 2: "+str(damage_dealt_player2)+", Player 1 remaining hp : "+str(player1_health)
+
+                print(damage_dealt_player1_str)
+                print(damage_dealt_player2_str)
+            if player1_health>0:
+                s.player1.coins+=s.player2_bet
+                print("Player 1 wins, coins gain: "+str(s.player2_bet))
+            else:
+                s.player2.coins+=s.player1_bet
+                print("Player 2 wins, coins gain: "+str(s.player1_bet))
+            return{
+            'name': 'Create Battle',
+            'type': 'ir.actions.act_window',
+            'res_model': 'runescape.battle_wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': self.id
+        }
+            
+
+    def back(self):
+        if self.state == '2':
+            self.state = '1'
+        if self.state == '3':
+            self.state = '2'
+        return{
+            'name': 'Create Battle',
+            'type': 'ir.actions.act_window',
+            'res_model': 'runescape.battle_wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': self.id
+        }
+
+    def next(self):
+        
+        if self.state == '2':
+                self.state = '3'
+        if self.state == '1':
+                self.state = '2'
+        return{
+            'name': 'Create Battle',
+            'type': 'ir.actions.act_window',
+            'res_model': 'runescape.battle_wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': self.id
+        }
 

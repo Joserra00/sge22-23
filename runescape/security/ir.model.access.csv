@@ -9,3 +9,4 @@ access_runescape_travel_dungeon,runescape.travel_dungeon,model_runescape_travel_
 access_runescape_player_wizard,runescape.player_wizard,model_runescape_player_wizard,base.group_user,1,1,1,1
 access_runescape_travel_wizard,runescape.travel_wizard,model_runescape_travel_wizard,base.group_user,1,1,1,1
 access_runescape_battle,runescape.battle,model_runescape_battle,base.group_user,1,1,1,1
+access_runescape_battle_wizard,runescape.battle_wizard,model_runescape_battle_wizard,base.group_user,1,1,1,1

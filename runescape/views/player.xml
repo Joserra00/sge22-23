@@ -53,6 +53,56 @@
                 </form>
             </field>
             </record>
+        <record model="ir.ui.view" id="runescape.battle_wizard">
+      <field name="name">runescape battle wizard</field>
+      <field name="model">runescape.battle_wizard</field>
+      <field name="arch" type="xml">
+        <form>
+             <header>
+            <button name="back"
+                    type="object"
+                    string="Back"
+                    class="btn btn-primary"
+
+            ></button>
+            <button name="next"
+                    type="object"
+                    string="Next"
+                    class="btn btn-primary"
+
+            ></button>
+          
+            <field name="state" widget="statusbar" />
+          </header>
+          <sheet>
+           <group states="1">
+
+              <field name="player1"/>
+              <field name="player1_bet" string="Apuesta"/>
+
+             </group>
+            <group states="2">
+
+              <field name="player2"/>
+              <field name="player2_bet" string="Apuesta"/>
+                   
+            </group>
+            <group states="3">
+
+              <field name="date_start"/>
+              <field name="date_end"/>
+              <button name="launch_battle" type="object" string="Launch Battle(Instantly)"/>
+                   
+            </group>
+            <footer>
+                        <button name="create_battle" type="object"
+                                string="Create" class="oe_highlight"/>
+                        <button special="cancel" string="Cancel"/>
+            </footer>
+          </sheet>
+        </form>
+      </field>
+    </record>
         <record id="runescape.travel_wizard_action" model="ir.actions.act_window">
       <field name="name">Create travel</field>
       <field name="res_model">runescape.travel_wizard</field>
@@ -68,16 +118,25 @@
             <field name="target">new</field>
             <field name="binding_model_id" ref="base.model_res_partner"/>
         </record>
+
+        <record id="runescape.battle_wizard_action" model="ir.actions.act_window">
+            <field name="name">Create Battle</field>
+            <field name="res_model">runescape.battle_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+        </record>
         <record model="ir.ui.view" id="runescape.player_list">
         <field name="name">runescape player</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-info="travel_type=='City'" decoration-danger="travel_type=='Dungeon'">
                 <field name="avatar" widget="image"/>
                     <field name="name"/>
                     <field name="hp"/>
                     <field name="coins"/>
                     <field name="strength"/>
+                    <field name="travel_type"/>
                 
             </tree>
         </field>
@@ -152,7 +211,10 @@
                                 <field name="hp"/>
                                 <field name="coins"/>
                                 <field name="strength"/>
+                                <button name="aumentar_strength" type="object" string="Increase Strength"/>
+                                <button name="disminuir_strength" type="object" string="Decrease Strength"/>
                                 <field name="is_player"/>
+                                <button name="generate_battle" type="object" string="New Battle" class="oe_highlight" />
                             </group>
                             <notebook>
                                 <page name="inventory" string="Inventory">
@@ -187,7 +249,6 @@
                                         </group>
                                             <group>
                                                 <field name="swordBuy"/>
-
                                                 <field name="swordBuy_price"/>
                                                 <field name="swordBuy_image" widget="image"/>
                                                 <button name="buy_sword"

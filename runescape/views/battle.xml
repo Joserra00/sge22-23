@@ -5,12 +5,43 @@
       <field name="model">runescape.battle</field>
       <field name="arch" type="xml">
         <form>
+             <header>
+            <button name="back"
+                    type="object"
+                    string="Back"
+                    class="btn btn-primary"
+
+            ></button>
+            <button name="next"
+                    type="object"
+                    string="Next"
+                    class="btn btn-primary"
+
+            ></button>
+          
+            <field name="state" widget="statusbar" />
+          </header>
           <sheet>
-            <group>
-                <field name="player1"/>
-                <field name="player2"/>
-                <field name="state"/>
+           <group states="1">
+
+              <field name="player1"/>
+              <field name="player1_bet" string="Apuesta"/>
+
+             </group>
+            <group states="2">
+
+              <field name="player2"/>
+              <field name="player2_bet" string="Apuesta"/>
+                   
             </group>
+            <group states="3">
+
+              <field name="date_start"/>
+              <field name="date_end"/>
+              <button name="launch_battle" type="object" string="Launch Battle(Instantly)"/>
+                   
+            </group>
+              
           </sheet>
         </form>
       </field>
@@ -26,6 +57,18 @@
         </tree>
       </field>
     </record>
+    <record model="ir.ui.view" id="runescape.battle_search">
+            <field name="name">runescape search battle</field>
+            <field name="model">runescape.battle</field>
+            <field name="arch" type="xml">
+            <search>
+            <field name="state"/>
+            <field name="player1"/>
+            <field name="player2"/>
+            <filter name="battle_partner" string="Battle ended" domain="[('battle_ended','=',False)]" />
+        </search>
+            </field>
+        </record>
 
     </data>
 </odoo>
