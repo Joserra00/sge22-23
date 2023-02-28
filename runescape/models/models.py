@@ -22,7 +22,7 @@ class player(models.Model):
         return self.env['runescape.sword'].search([])[6]
 
     sword = fields.Many2one('runescape.sword',readonly=True)
-    swordBuy = fields.Many2one('runescape.sword',default=_first_sword,domain="[('id','!=',sword)]"
+    swordBuy = fields.Many2one('runescape.sword'#,default=_first_sword,domain="[('id','!=',sword)]"
     )
     swordBuy_image = fields.Image(related='swordBuy.sword_image')
     swordBuy_price = fields.Integer(related='swordBuy.price')
@@ -34,7 +34,7 @@ class player(models.Model):
         return self.env['runescape.armor'].search([])[6]
 
     armor = fields.Many2one('runescape.armor',readonly=True)
-    armorBuy = fields.Many2one('runescape.armor',default=_first_armor,domain="[('id','!=',armor)]"
+    armorBuy = fields.Many2one('runescape.armor'#,default=_first_armor,domain="[('id','!=',armor)]"
     )
     armorBuy_image = fields.Image(related='armorBuy.armor_image')
     armorBuy_price = fields.Integer(related='armorBuy.price')

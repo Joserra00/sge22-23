@@ -1,7 +1,7 @@
 <odoo>
     <data>
     
-     <record id="player_demo" model = "res.partner">
+     <!--<record id="player_demo" model = "res.partner">
 
             <field name="name">Demo player</field>
             <field name="is_player">True</field>
@@ -9,7 +9,7 @@
             <field name="password">1234</field>
             <field name="armor" ref = "rune_armor"></field>
             <field name="sword" ref = "rune_sword"></field>
-        </record>
+        </record>-->
     
     </data>
 
