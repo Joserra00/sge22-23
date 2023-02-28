@@ -65,7 +65,7 @@
             <field name="state"/>
             <field name="player1"/>
             <field name="player2"/>
-            <filter name="battle_partner" string="Battle ended" domain="[('battle_ended','=',False)]" />
+            <filter name="battle_partner" string="Battle remaining" domain="[('battle_ended','=',False)]" />
         </search>
             </field>
         </record>
