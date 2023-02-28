@@ -28,12 +28,12 @@
       <field name="name">runescape</field>
       <field name="res_model">res.partner</field>
       <field name="view_mode">kanban,tree,form</field>
-      <!--<field name="domain"></field>
+      <field name="domain"></field>
       <field name="search_view_id" ref="runescape.player_search"></field>
       <field name="context">{'search_default_player_partner': 1, 'default_is_player': True, }</field>
       <field name="view_ids" eval="[(5, 0, 0),
             (0, 0, {'view_mode': 'tree', 'view_id': ref('runescape.player_list')}),
-            (0, 0, {'view_mode': 'form', 'view_id': ref('runescape.player_form')}),]" />-->
+            (0, 0, {'view_mode': 'form', 'view_id': ref('runescape.player_form')}),]" />
     </record>
         <record model="ir.actions.act_window" id="runescape.action_armor_window">
       <field name="name">Armor</field>
@@ -69,7 +69,7 @@
       <field name="name">Battle</field>
       <field name="res_model">runescape.battle</field>
       <field name="view_mode">tree,form</field>
-      <field name="context">{'search_default_battle_partner': 1, 'default_battle_ended': True}</field>
+      <field name="context">{'search_default_battle_partner': 1, 'default_battle_ended': False}</field>
     </record>
 
 

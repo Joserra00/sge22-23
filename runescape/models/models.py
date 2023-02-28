@@ -22,7 +22,7 @@ class player(models.Model):
         return self.env['runescape.sword'].search([])[6]
 
     sword = fields.Many2one('runescape.sword',readonly=True)
-    swordBuy = fields.Many2one('runescape.sword'#,default=_first_sword,domain="[('id','!=',sword)]"
+    swordBuy = fields.Many2one('runescape.sword',default=_first_sword,domain="[('id','!=',sword)]"
     )
     swordBuy_image = fields.Image(related='swordBuy.sword_image')
     swordBuy_price = fields.Integer(related='swordBuy.price')
@@ -34,7 +34,7 @@ class player(models.Model):
         return self.env['runescape.armor'].search([])[6]
 
     armor = fields.Many2one('runescape.armor',readonly=True)
-    armorBuy = fields.Many2one('runescape.armor'#,default=_first_armor,domain="[('id','!=',armor)]"
+    armorBuy = fields.Many2one('runescape.armor',default=_first_armor,domain="[('id','!=',armor)]"
     )
     armorBuy_image = fields.Image(related='armorBuy.armor_image')
     armorBuy_price = fields.Integer(related='armorBuy.price')
@@ -65,6 +65,8 @@ class player(models.Model):
         new_id = super(player, self).create(values)
         self.env['runescape.travel_dungeon'].create(
             {'player': new_id.id, 'travel_to': '1', 'zone': self.env['runescape.zone'].search([])[0].id})
+        if not self.armor:
+            raise ValidationError("Debes elegir tu armadura y tu sword")
         return new_id
 
     def _location_assign(self):
@@ -394,6 +396,11 @@ class battle(models.Model):
             if (s.date_end < fields.Datetime.now()) and not s.battle_ended:
                 player1_health = s.player1.hp
                 player2_health = s.player2.hp
+                if s.player1.defense<1 or s.player2.defense<1:
+                       return {
+                    'warning': {'title': "Warning", 'message': "Uno de los players no tiene armadura no se puede hacer la batalla", 'type': 'notification'},
+                } 
+
                 while player1_health>0 and player2_health>0:
                     damage_dealt_player1=(randrange(0,int(s.player1.damage*s.player1.strength/(s.player1.defense+1)),1))
                     player2_health -=damage_dealt_player1
