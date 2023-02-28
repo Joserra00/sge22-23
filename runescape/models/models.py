@@ -65,6 +65,8 @@ class player(models.Model):
         new_id = super(player, self).create(values)
         self.env['runescape.travel_dungeon'].create(
             {'player': new_id.id, 'travel_to': '1', 'zone': self.env['runescape.zone'].search([])[0].id})
+        if not self.armor:
+            raise ValidationError("Debes elegir tu armadura y tu sword")
         return new_id
 
     def _location_assign(self):
